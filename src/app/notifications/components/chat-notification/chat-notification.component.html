@@ -1,0 +1,151 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
+    rel="stylesheet">
+
+<div *ngIf='!NewChat' class="chat">
+    <!-- Listado de chat (sección izquierda) -->
+    <div class="chat__list__empty" *ngIf="respuesta.length == 0">
+        <h3 class="chat__title">
+            No tenemos mensajes
+            <br>
+            para mostrarte.
+        </h3>
+        <p class="chat__message">
+            Si el mensaje no va a Maoma… Maoma
+            <br>
+            no es bobo y envía él el mensaje,
+            <br>
+            porque sabe que alguien debe
+            <br>
+            empezar la conversación.
+            <br><br>
+            Así que sé como Maoma y envía tu mensaje.
+        </p>
+        <button type="button" [disabled]="permisos.creacion !== 'S'" (click)='NewChat = true'>
+            {{"chatNoti.boton" | translate}}
+        </button>
+    </div>
+
+    <div class="chat__list" *ngIf="respuesta.length > 0">
+        <div class="chat__list__header">
+            <input type="text" class="search__bar" placeholder="Buscar vecino" name="filterPost"
+                [(ngModel)]="filterPost">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </div>
+        <div class="chat__list__content" #chatList>
+            <div class="chat__list__item" *ngFor="let vecinos of respuesta | filterChat:filterPost ; index as i"
+                (click)='conversacionSeleccionada(vecinos, i)'>
+                <div class="chat__img">
+                    <img [src]="vecinos.fotoPerfil" alt="Foto" *ngIf="vecinos.fotoPerfil">
+                    <img [src]="DEFAULT_PICTURE" alt="Foto" *ngIf="!vecinos.fotoPerfil">
+                </div>
+                <div class="chat__info">
+                    <div class="chat__user">
+                        {{vecinos.nombreUsuario}}
+                    </div>
+                    <div class="chat__property">
+                        Apto: {{vecinos.numeroInmueble}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chat__list__footer">
+            <button type="button" [disabled]="permisos.creacion !== 'S'" (click)='NewChat = true'>
+                {{"chatNoti.boton" | translate}}
+            </button>
+        </div>
+    </div>
+    <!-- Listado de chat (sección izquierda) -->
+
+
+
+    <!-- Listado de mensajes (sección derecha) -->
+    <div class="chat__content">
+
+        <div class="chat__body__empty" *ngIf="listadoMensajes.length == 0 && respuesta.length > 0">
+            <h3 class="chat__title">
+                No tenemos mensajes para mostrarte.
+            </h3>
+            <p class="chat__message">
+                Si el mensaje no va a Maoma… Maoma
+                <br>
+                no es bobo y envía él el mensaje,
+                <br>
+                porque sabe que alguien debe
+                <br>
+                empezar la conversación.
+                <br><br>
+                Así que sé como Maoma y envía tu mensaje.
+            </p>
+            <div class="img__no__messages"></div>
+        </div>
+
+        <div class="chat__body__empty" *ngIf="listadoMensajes.length == 0 && respuesta.length == 0">
+            <div class="img__no__messages"></div>
+        </div>
+
+        <div class="chat__body" #chatBody *ngIf="listadoMensajes.length >= 1">
+            <div *ngFor="let mensaje of listadoMensajes; index as i"
+                [ngClass]="{'my__content__message': mensaje.rolUsuario !== 'Vecino', 'other__content__message': mensaje.rolUsuario === 'Vecino'}">
+                <div class="chat__picture">
+                    <img *ngIf="mensaje.rolUsuario === 'Vecino' && fotoPerfilUser" [src]="fotoPerfilUser" alt="picture">
+                    <img *ngIf="mensaje.rolUsuario !== 'Vecino' && objEstablecimiento.ruta_imagen_establ"
+                        [src]="objEstablecimiento.ruta_imagen_establ" alt="picture">
+                    <img [src]="DEFAULT_PICTURE" alt="Foto" *ngIf="!fotoPerfilUser && mensaje.rolUsuario === 'Vecino'">
+                    <img [src]="DEFAULT_PICTURE" alt="Foto"
+                        *ngIf="!objEstablecimiento.ruta_imagen_establ && mensaje.rolUsuario !== 'Vecino'">
+                </div>
+                <div class="chat__data">
+                    <div [ngClass]="{'my__message': mensaje.rolUsuario !== 'Vecino', 'other__message': mensaje.rolUsuario === 'Vecino',
+                        'message__urgent': mensaje.criticidad === 1 && !mensaje.isDelete, 'message__medium': mensaje.criticidad === 2 && !mensaje.isDelete,
+                        'message__low': mensaje.criticidad === 3 && !mensaje.isDelete}">
+
+                        <div class="alert__message" *ngIf="mensaje.criticidad !== 0 && !mensaje.isDelete">
+                            <div class="circle" [ngClass]="{'alert__urgent': mensaje.criticidad === 1,
+                            'alert__medium': mensaje.criticidad === 2, 'alert__low': mensaje.criticidad === 3}">
+                            </div>
+                            <p class="alert__low" *ngIf="mensaje.criticidad === 3">Relax</p>
+                            <p class="alert__medium" *ngIf="mensaje.criticidad === 2">Presta atención</p>
+                            <p class="alert__urgent" *ngIf="mensaje.criticidad === 1">Súper urgente</p>
+                            <i class="fa fa-trash" (click)="removeMsg(i)"></i>
+                        </div>
+                        <h3 class="chat__name__neighbour" *ngIf="mensaje.rolUsuario === 'Vecino'">
+                            {{ mensaje.nombreUsuario }}
+                        </h3>
+                        <h3 class="chat__rol" *ngIf="mensaje.rolUsuario !== 'Vecino'">
+                            <span>{{ mensaje.rolUsuario }}</span>
+                            <i class="fa fa-trash" (click)="removeMsg(i)"
+                                *ngIf="mensaje.criticidad === 0 && !mensaje.isDelete"></i>
+                        </h3>
+                        <p class="chat__message" *ngIf="!mensaje.isDelete" [innerHTML]='mensaje.mensaje'></p>
+                        <p *ngIf="mensaje.isDelete">
+                            <i class="fa fa-info-circle"></i>
+                            Este mensaje fue eliminado
+                        </p>
+                    </div>
+                    <p
+                        [ngClass]="{'my__time': mensaje.rolUsuario !== 'Vecino', 'other__time': mensaje.rolUsuario === 'Vecino'}">
+                        {{mensaje.fechaMensaje}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat__footer" *ngIf="listadoMensajes.length >= 1">
+            <form [formGroup]='chatForm'>
+                <input type="text" class="chat__input" formControlName='message' (keyup.enter)='sendMessage()'
+                    placeholder='{{"chatNoti.escribe" | translate}}'>
+                <button type="button" class="chat__btn__send" [disabled]="this.chatForm.get('message').value == ''"
+                    (click)='sendMessage()'>
+                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<app-create-chat *ngIf='NewChat' (newChat)='NewChat = $event' [objEstablecimiento]='objEstablecimiento'>
+</app-create-chat>

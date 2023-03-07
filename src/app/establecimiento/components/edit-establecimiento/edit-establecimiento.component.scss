@@ -1,0 +1,93 @@
+.inputEdit {
+    border: 1px solid #9DA5B5;
+    border-radius: 8px;
+    opacity: 1;
+    width: 360px;
+    height: 50px;
+    padding-left: 12px;
+    font: Regular 14px/16px Raleway;
+}
+
+.btnFirstStep {
+    background: #3DB5FF 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    opacity: 1;
+    border: none;
+    color: #ffffff;
+    width: 192px;
+    height: 50px;
+    font: Regular 14px/16px Raleway;
+}
+
+.btnReturnStep {
+    background: none;
+    border-radius: 8px;
+    opacity: 1;
+    border-color: #3DB5FF;
+    color: #3DB5FF;
+    width: 145px;
+    height: 50px;    
+    font: Regular 14px/16px Raleway;
+}
+
+.btnSaveUpdate {
+    background: #3DB5FF 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    opacity: 1;
+    border: none;
+    color: #ffffff;
+    width: 145px;
+    height: 50px;
+    font: Regular 14px/16px Raleway;
+}
+
+.logoUnidapp {
+    border: 1px solid #9DA5B5;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.classImg {
+    background-image: no-repeat;
+}
+
+.sa-icon.sa-custom {
+    background-image: no-repeat;
+}
+
+.input-group {
+    display: block !important;
+}
+.progress{
+    margin-bottom: 20px;
+}
+
+span.red {
+    background: #7D368A;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #7D368A;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 20px;
+    margin-right: 5px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  span.grey {
+    background: #854291;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #854291;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 20px;
+    margin-right: 5px;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+  }

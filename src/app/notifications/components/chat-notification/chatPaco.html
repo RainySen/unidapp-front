@@ -1,0 +1,174 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+
+<div *ngIf='!this.NewChat'>
+    <div class="">
+        <div class="messaging">
+            <div class="inbox_msg">
+                <!-- LISTADO -->
+                <div class="inbox_people">
+                    <div class="headind_srch">
+                        <div class="srch_bar">
+                            <div class="stylish-input-group">
+                                <input type="text" class="search-bar" placeholder="Buscar vecino">
+                                <span class="input-group-addon">
+                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                    </span> </div>
+                        </div>
+                    </div>
+                    <div class="inbox_chat">
+                        <div class="chat_list active_chat">
+
+                            <div class="contentChatUser" *ngFor="let mensajes of this.respuesta; index as i" (click)='this.comversacionSeleccionada(mensajes)'>
+                                    <!-- <button class="btn boton_chat">
+                                        <div class="chat_people selectMessaje">
+                                            <div class="chat_img"> <img [src]="this.respuesta[i].fotoPerfil" alt="Foto"> </div>
+                                            <div class="chat_ib">
+                                                <h5>{{this.respuesta[i].nombreUsuario}}<span class="chat_date">{{this.respuesta[i].numeroInmueble}}</span></h5>
+                                            </div>
+                                        </div>
+                                    </button> -->
+                                    <div class="chat__img">
+                                        <img [src]="this.respuesta[i].fotoPerfil" alt="Foto">
+                                    </div>
+                                    <div class="chat__info">
+                                        <div class="chat__user">
+                                            {{this.respuesta[i].nombreUsuario}}
+                                        </div>
+                                        <div class="chat__property">
+                                            Apto: {{this.respuesta[i].numeroInmueble}}
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <button *ngIf='this.permisos.creacion == "S"' class="btn btn-primary botonMas" (click)='this.NewChat = true'>{{"chatNoti.boton" | translate}}</button>
+                    </div>
+                </div>
+                <!-- MENSAJES -->
+                <div class="mesgs">
+                    <div class="msg_history">
+                        <div *ngIf='this.chatSeleccionado'>
+                            <div *ngFor="let mensajes of this.listadoMensajes; index as i">
+
+                                <div [ngSwitch]="this.listadoMensajes[i].rolUsuario">
+                                    <div *ngSwitchCase="'Portero'">
+
+                                        <div *ngIf="this.listadoMensajes[i].idCategoria != 0" class="incoming_msg">
+                                            <div class="incoming_msg_img"> <img [src]="this.objEstablecimiento.ruta_imagen_establ" alt="Foto"> </div>
+                                            <div class="received_msg">
+                                                <div class="received_withd_msg">
+                                                    <p class="contenidoMsg">{{this.listadoMensajes[i].mensaje}}</p>
+                                                    <span class="time_date">{{this.listadoMensajes[i].fechaMensaje}}</span></div>
+                                            </div>
+                                        </div>
+
+                                        <div *ngIf="this.listadoMensajes[i].idCategoria == 0" class="incoming_msg">
+                                            <div class="incoming_msg_img"> <img [src]="this.objEstablecimiento.ruta_imagen_establ" alt="Foto"> </div>
+                                            <div class="received_msg">
+                                                <div class="received_withd_msg">
+                                                    <p class="contenidoMsg">{{this.listadoMensajes[i].mensaje}}</p>
+                                                    <span class="time_date">{{this.listadoMensajes[i].fechaMensaje}}</span></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div *ngSwitchCase="'Admin'">
+                                        <div *ngIf="this.listadoMensajes[i].idCategoria != 0" class="incoming_msg">
+                                            <div [ngSwitch]="this.listadoMensajes[i].criticidad">
+                                                <div *ngSwitchCase="1">
+                                                    <div class="incoming_msg_img"> <img [src]="this.objEstablecimiento.ruta_imagen_establ" alt="Foto"> </div>
+                                                    <div class="received_msg">
+                                                        <i class="icon-high"></i>
+                                                        <div class="received_withd_msg high">
+                                                            <p class="etiqueta">{{this.listadoMensajes[i].nombreCategoria}}</p>
+                                                            <p [innerHTML]='this.listadoMensajes[i].mensaje'></p>
+                                                            <span class="time_date">{{this.listadoMensajes[i].fechaMensaje}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div *ngSwitchCase="2">
+                                                    <div class="incoming_msg_img"> <img [src]="this.objEstablecimiento.ruta_imagen_establ" alt="Foto"> </div>
+                                                    <div class="received_msg">
+                                                        <div class="received_withd_msg medium">
+                                                            <i class="icon-medium"></i>
+                                                            <p class="etiqueta">{{this.listadoMensajes[i].nombreCategoria}}</p>
+                                                            <p class="mensajeEnviado" [innerHTML]='this.listadoMensajes[i].mensaje'></p>
+                                                            <span class="time_date">{{this.listadoMensajes[i].fechaMensaje}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngSwitchCase="3">
+                                                    <div class="incoming_msg_img"> <img [src]="this.objEstablecimiento.ruta_imagen_establ" alt="Foto"> </div>
+                                                    <div class="received_msg">
+                                                        <div class="received_withd_msg low">
+                                                            <i class="icon-low"></i>
+                                                            <p class="etiqueta">{{this.listadoMensajes[i].nombreCategoria}}</p>
+                                                            <p [innerHTML]='this.listadoMensajes[i].mensaje'></p>
+                                                            <span class="time_date">{{this.listadoMensajes[i].fechaMensaje}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div *ngIf="this.listadoMensajes[i].idCategoria == 0" class="incoming_msg">
+                                            <div class="incoming_msg_img"> <img [src]="this.objEstablecimiento.ruta_imagen_establ" alt="Foto"> </div>
+                                            <div class="received_msg">
+                                                <div class="received_withd_msg">
+                                                    <p class="contenidoMsg">{{this.listadoMensajes[i].mensaje}}</p>
+                                                    <span class="time_date">{{this.listadoMensajes[i].fechaMensaje}}</span></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div *ngSwitchDefault>
+                                        <div class="outgoing_msg">
+                                            <div class="sent_msg derecha">
+                                                <div class="incoming_msg_img derecha"> <img class="imgDerecha" [src]="this.fotoPerfilUser" alt="Foto"> </div>
+                                                <div class="message">
+                                                    <span class="nameUser">
+                                                        {{this.listadoMensajes[i].nombreUsuario}}
+                                                    </span>
+                                                    <p>
+                                                        {{this.listadoMensajes[i].mensaje}}
+                                                    </p>
+                                                </div>
+                                                <span class="time_date">{{this.listadoMensajes[i].fechaMensaje}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf='!this.chatSeleccionado'>
+                            <p>{{"chatNoti.noMensajes" | translate}}</p>
+                        </div>
+                    </div>
+                    <form [formGroup]='chatForm'>
+                        <div class="">
+                            <div class="col-md-12" style="padding: 0px;">
+                                <div class="row-md-10 alineacion">
+                                    <input type="text" class="inputTexto" formControlName='messaje' (keyup.enter)='this.sendMessaje()' placeholder='{{"chatNoti.escribe" | translate}}' />
+                                    <div class="row-md-2">
+                                        <button class="msg_send_btn" type="button" (click)='this.sendMessaje()' [disabled]="this.chatForm.valid">
+                                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-create-chat *ngIf='this.NewChat' (newChat)='this.NewChat = $event' [objEstablecimiento]='this.objEstablecimiento'>
+</app-create-chat>

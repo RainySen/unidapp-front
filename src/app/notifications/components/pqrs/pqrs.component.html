@@ -1,0 +1,87 @@
+<div class="container" *ngIf='!this.editar'>
+<div class="mt-4">
+  <div class="form-group">
+      <label class="font-weight-bold Titulo"><strong>{{"pqrs.respondePqrs" | translate}}</strong></label>
+  </div>
+  <div class="form-group">
+      <label class="subtitulo">{{"pqrs.mensaje1" | translate}}</label>
+  </div>
+  <br>
+  <!-- BARRA DE PROGRESO -->
+  <div class="barra">
+      <div class="progress progress-striped">
+          <div class="progress-bar progress-bar-danger" role="progressbar"
+               aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+               style="width: 50%">
+            <span class="sr-only">80% completado</span>
+          </div>
+      </div>
+      <div class="letrasBarra">
+        <div><span class="red">d</span><strong>Datos de la solicitud</strong></div>
+          <span class="derecha">Respuesta</span>
+      </div>
+  </div>
+
+  <!-- FOTO -->
+  <div class="foto">
+      <img src="https://www.echaleunojo.com/u/fotografias/m/2020/9/7/f638x638-554_58721_5050.jpg" alt="">
+  </div>
+
+  <!-- NOMBRE -->
+  <div class="datos">
+      <label class="nombre">
+          <strong>Natalia Pino</strong>
+      </label>
+      <br>
+      <label>
+          Inmueble 302
+      </label>
+  </div>
+
+  <!-- INFORMACION -->
+  <div class="informacion">
+    <div class="row">
+      <div class="col-4">
+      </div>
+      <div class="col-4 categoria">
+        <label class="nombre">
+          <strong>Categoría: </strong>
+        </label>
+        <span class="motivo"> Felicitación</span>
+      </div>
+      <div class="col-4">
+        <p class="hora">
+         <b>10/03/2021 - 08:00 AM</b>
+        </p>
+      </div>
+    </div>
+      <h2><span class="tema">TEMA:</span><span> ASEO</span></h2>
+      <div class="row">
+          <div class="col-3">
+          <i class="icon-exclamation1"></i>
+          </div>
+          <div class="col-5 contenido-centrado">
+            <p class="contenido">{{"pqrs.mensaje2"|translate}}</p>
+            <p class="contenido contenido-izquierda">{{"pqrs.mensaje3"|translate}}<b> {{"pqrs.mensajeResaltado"|translate}}</b> {{"pqrs.dexterLab"|translate}}</p>
+            <hr>
+          </div>
+          <div class="col-3">
+            <i class="icon-exclamation2"></i>
+            </div>
+      </div>
+      <a class="adjunto" href="#"><b><u>Ver adjunto</u></b></a>
+      <div class="botones boton">
+          <button class="btn cancelar" >Cancelar</button>
+          <button class="btn siguiente" (click)="this.crearpqrs()">Siguiente paso</button>
+      </div>
+  </div>
+</div>
+
+</div>
+<!--<app-list-pqrs></app-list-pqrs>-->
+<div class="row">
+  <div *ngIf='this.editar'>
+    <app-create-pqrs ></app-create-pqrs>
+  </div>
+</div>
+

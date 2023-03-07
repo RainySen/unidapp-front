@@ -1,0 +1,175 @@
+<div *ngIf='this.listado'>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7" style="text-align: left;">
+                <label style="color: #7D368A; font-weight: bold; font-size: 20px; margin-bottom: -5px;">{{"vecinos.administrarCuentas" | translate}}</label><br>
+                <label style="color: #525F7F; font-size: 18px;">{{"vecinos.ingresaDatosVecinos" | translate}}</label>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 offset-1">
+                <button hidden class="btnAprendaEstados" id="btn-abrir-popup" onclick="overlay.classList.add('active');" style="margin-top: 17px;">
+                  {{"vecinos.aprendeEstados" | translate}}
+                </button>
+            </div>
+            <div *ngIf='this.permisos.creacion == "S"' class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-right: 0px;">
+                <button class="btnAgregarVecinos" style="margin-top: 17px; width: 100%;" (click)='this.crearUsuario("")'>
+                  {{"vecinos.agregaVecino" | translate}}
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="border-bottom: 1px solid #525F7F80; padding-top: 1rem; margin-bottom: 1rem;">
+            </div>
+        </div>
+        <div class="row" *ngIf='this.mensajeCrearNuevo && !this.cargando'>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                <form [formGroup]='filtro'>
+                    <div class="row" style="text-align: left;">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <label class="tittleFilters">{{"vecinos.buscaVecino" | translate}}</label>
+                            <div>
+                                <input class="inputSearchName" formControlName='filtroNombre' (keyup)='this.filtrarNombre()'>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                            <label class="tittleFilters">{{"vecinos.filtraBusqueda" | translate}}</label>
+                            <div>
+                                <input class="inputFilter col-xs-12 col-sm-12 col-md-12 col-lg-12" maxlength="1" formControlName='filtroEstado' (keyup)='this.filtrarEstado()'>
+                            </div>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding-right: 0px;">
+                            <label class="tittleFilters">{{"vecinos.ordenaBusqueda" | translate}}</label>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle btnBajar col-xs-12 col-sm-12 col-md-12 col-lg-12 botonOrdenar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {{"vecinos.ordenar" | translate}}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" (click)='this.orderBy(1)'><b>{{"vecinos.az" | translate}}</b></a>
+                                    <a class="dropdown-item" (click)='this.orderBy(2)'><b>{{"vecinos.za" | translate}}</b></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+                <div class="row headerTable divTableListVecinos" style="height: 50px; margin-bottom: 2%;">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 align-self-center text-left">{{"vecinos.nombreVecino" | translate}}</div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 align-self-center text-left">{{"vecinos.correoElectronico" | translate}}</div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 align-self-center text-left">{{"vecinos.telefono" | translate}}</div>
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 align-self-center text-left">{{"vecinos.inmueble" | translate}}</div>
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 align-self-center text-center">{{"vecinos.estado" | translate}}</div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 align-self-center text-left">{{"vecinos.fechaModificacion" | translate}}</div>
+                </div>
+
+                <div class="row headerTable divTableListVecinos" *ngFor="let vecino of this.listVecinoFilter">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 align-self-center text-left noselect seleccionUsuario puntosSuspensivos" (dblclick)='this.editarVecino(vecino)'> {{vecino.neighbor.nombres+' '+vecino.neighbor.apellidos}}</div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 align-self-center text-left puntosSuspensivos">{{vecino.email}}</div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 align-self-center text-left puntosSuspensivos">{{vecino.neighbor.numero_celular}}</div>
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 align-self-center text-left noselect seleccionInmueble" (dblclick)='this.editarActivo(vecino)'>{{vecino.num_inmueble}}</div>
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 align-self-center text-left puntosSuspensivos">
+                        <div [ngSwitch]="vecino.neighbor.estado">
+                            <div class="colorEstados-Activo" *ngSwitchCase="'A'">{{"vecinos.activo" | translate}}</div>
+                            <div class="colorEstados-Creado" *ngSwitchCase="'C'">{{"vecinos.creado" | translate}}</div>
+                            <div class="colorEstados-Aprobado" *ngSwitchCase="'I'">{{"vecinos.aprobado" | translate}}</div>
+                            <div class="colorEstados-Retirado" *ngSwitchDefault>{{"vecinos.retirado" | translate}}</div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 align-self-center text-left puntosSuspensivos puntosSuspensivos2">{{vecino.neighbor.updated_at | date:"dd-MM-yyyy"}}</div>
+                    <i class="icon-editUser noselect" (click)='this.crearUsuario(vecino)'></i>
+                    <i class="icon-deleteUser noselect" (click)='this.eliminarUsuario(vecino)'></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf='this.cargando'>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <img type="image" src="../../../../assets/img/authorization/load_house.gif" style="height: 80%;" />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf='!this.mensajeCrearNuevo'>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <i class="icon-empty"></i>
+                        <label class="tituloSinVecinos">{{"vecinos.momentoBrillar" | translate}}</label>
+                        <br>
+                        <label class="subTituloSinVecinos">{{"vecinos.llenarLista" | translate}}</label>
+                        <br>
+                        <button class="btnAgregarVecinos" style="margin-top: -20px;" (click)='this.crearUsuario("")'>{{"vecinos.agregaVecino" | translate}}</button>
+
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <div id="btn-cerrar-popup" class="btn-cerrar-popup iconoX" onclick="overlay.classList.remove('active')">
+                        <p class="btnCerrar"><strong>X</strong></p>
+                    </div>
+                </div>
+            </div>
+            <h3 class="tituloPopup">{{"vecinos.identificaEstados" | translate}}</h3>
+            <p class="colorParrafo lineaPunteada">{{"vecinos.noTePreocupes" | translate}}</p>
+            <div class="row align-items-center margenColumnas">
+                <div class="col-xs-12 col-md-2 col-xl-2 margenesAyuda text-center morado"><strong>{{"vecinos.creado" | translate}}</strong></div>
+                <div class="col-xs-12 col-md-10 col-xl-10 colorParrafo">{{"vecinos.descCreado" | translate}}</div>
+            </div>
+            <div class="row align-items-center margenColumnas">
+                <div class="col-xs-12 col-md-2 col-xl-2 margenesAyuda text-center rosa"><strong>{{"vecinos.activo" | translate}}</strong></div>
+                <div class="col-xs-12 col-md-10 col-xl-10 colorParrafo">{{"vecinos.descActivo" | translate}}</div>
+            </div>
+            <div class="row align-items-center margenColumnas">
+                <div class="col-xs-12 col-md-2 col-xl-2 margenesAyuda text-center align-self-center verde"><strong>{{"vecinos.aprobado" | translate}}</strong></div>
+                <div class="col-xs-12 col-md-10 col-xl-10  align-self-center colorParrafo">{{"vecinos.descAprobado" | translate}}</div>
+            </div>
+            <div class="row  align-items-center margenColumnas">
+                <div class="col-xs-12 col-md-2 col-xl-2 margenesAyuda text-center align-self-center gris"><strong>{{"vecinos.retirado" | translate}}</strong></div>
+                <div class="col-xs-12 col-md-10 col-xl-10  align-self-center colorParrafo">{{"vecinos.descRetirado" | translate}}</div>
+            </div>
+
+            <div class="row align-items-center margenColumnas">
+                <div class="col-xs-12 col-md-12 col-xl-12 text-center colorParrafo"><strong>{{"vecinos.tienesDudas" | translate}}</strong> {{"vecinos.enviaMensaje" | translate}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <input type="button" value="Envíanos tus mensajes" class="btn-submit">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf='this.viewEditarVecino'>
+    <app-edit-vecino [objEditarVecino]='this.objEditarVecino' [idEstablecimiento]='this.establecimientoInfo._id' (propagar)="procesaPropagar()">
+    </app-edit-vecino>
+</div>
+
+<div *ngIf='this.viewEditarActivo'>
+    <app-activo-view [objEditarActivo]='this.objEditarActivo' [idEstablecimiento]='this.establecimientoInfo._id' (propagar)="procesaPropagar()"></app-activo-view>
+</div>
+
+<div *ngIf='this.viewCrearUsuario'>
+    <app-create-vecino [idEstablecimiento]='this.establecimientoInfo._id' [objUsuario]='this.objEditarUsuario' (propagar)="procesaPropagar()"></app-create-vecino>
+</div>

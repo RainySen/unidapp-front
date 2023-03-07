@@ -1,0 +1,111 @@
+<div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form [formGroup]="Usuario" class="form centrarDiv">
+        <div class="row">
+            <div class="col">
+                <h2 class="tituloUsuario titulos">{{"vecinos.creaEdita" | translate}}</h2>
+                <p class="subtituloP textoTitulo">{{"vecinos.ingresaDatos" | translate}}</p>
+            </div>
+        </div>
+
+
+        <div class="row" *ngIf='this.cargando'>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <img type="image" src="../../../../assets/img/authorization/load_house.gif" style="height: 80%;" />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row" *ngIf='!this.cargando'>
+            <div class="col">
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" style="text-align: left;">
+                    <label for="Nombre" class="colorLetra textoInputs alinearIzquierda">{{"vecinos.escribeNombres" | translate}}</label>
+                    <input type="text" formControlName='Nombres' name="Nombre" id="Nombre" class="form-control inputsAgregar">
+                </div>
+                <span *ngIf="this.Usuario.get('Nombres').hasError('required') && this.Usuario.get('Nombres').touched">
+                    <div class="alert alert-danger mt-2 alertError col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" role="alert">
+                        {{"global.required" | translate}}
+                    </div>
+                </span>
+
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" style="text-align: left;">
+                    <label for="Apellidos" class="colorLetra textoInputs alinearIzquierda">
+                      {{"vecinos.escribeApellidos" | translate}}
+                    </label>
+                    <input type="text" formControlName='Apellidos' name="Apellidos" id="Apellidos" class="form-control inputsAgregar">
+                </div>
+
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" style="text-align: left;">
+                    <label for="Email" class="colorLetra textoInputs alinearIzquierda">
+                      {{"vecinos.escribeCorreo" | translate}}
+                    </label>
+                    <input type="text" formControlName='Email' name="Email" id="Email" class="form-control inputsAgregar">
+                </div>
+                <span *ngIf="this.Usuario.get('Email').hasError('required') && this.Usuario.get('Email').touched">
+                    <div class="alert alert-danger mt-2 alertError col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" role="alert">
+                        {{"global.required" | translate}}
+                    </div>
+                </span>
+                <span *ngIf="this.Usuario.get('Email').hasError('pattern') && this.Usuario.get('Email').touched">
+                    <div class="alert alert-danger mt-2 alertError col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" role="alert">
+                      {{"global.validEmail" | translate}}
+                    </div>
+                </span>
+
+                <div formArrayName="inmuebles" class="placas">
+                    <div *ngFor="let item of inmuebles.controls; let pointIndex=index" [formGroupName]="pointIndex">
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                            <label for="num_inmueble" class="colorLetra textoInputs alinearIzquierda">
+                              {{"vecinos.nomenclaturaInterna" | translate}}
+                            </label>
+                            <input type="text" formControlName='num_inmueble' name="num_inmueble" id="num_inmueble" class="form-control inputsAgregar">
+                        </div>
+                        <span *ngIf="item.get('num_inmueble').hasError('required') && item.get('num_inmueble').touched">
+                            <div class="alert alert-danger mt-2 alertError col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" role="alert">
+                              {{"global.required" | translate}}
+                            </div>
+                        </span>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                            <label for="estado" class="alinearIzquierda colorLetra">{{"vecinos.eligeEstado" | translate}}</label>
+                            <select type="text" formControlName='estado' name="estado" id="estado" class="form-control">
+                            <option value="A" selected>{{"vecinos.activo" | translate}}</option>
+                            <option value="I">{{"vecinos.inactivo" | translate}}</option>
+                            <option value="P">{{"vecinos.proceso" | translate}}</option>
+                        </select>
+                        </div>
+                        <span *ngIf="item.get('estado').hasError('required') && item.get('estado').touched">
+                          <div class="alert alert-danger mt-2 alertError col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" role="alert">
+                            {{"global.required" | translate}}
+                          </div>
+                        </span>
+                        <div (click)="this.deleteInmueble(pointIndex)" class="icon-trash"></div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 centrarDiv"></div>
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 centrarDiv">
+                            <p class="colorLetra"><strong class="agregarMas" id="agregarMascota" (click)='this.addinmueble()'>+</strong></p>
+                        </div>
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 centrarDiv"><label>{{"vecinos.agregarInmueble" | translate}}</label></div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 centrarDiv"></div>
+                    </div>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 centrarDiv">
+                    <button type="submit" class="btn btn-primary botonRegresar" (click)='this.onPropagar()'>{{"global.regresar" | translate}}</button>
+                    <button type="submit" class="btn btn-primary botonGuardar" (click)='this.crear()'>{{"vecinos.guardaDatos" | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

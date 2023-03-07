@@ -1,0 +1,164 @@
+<div class="container">
+    <form [formGroup]='activosForm' class="form centrarDiv">
+        <div class="row">
+            <div class="col">
+                <h2 class="tituloUsuario">{{"vecinos.datosImportantes" | translate}}</h2>
+                <p class="subtituloP">{{"vecinos.ingresaedita" | translate}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="num_inmueble" class="alinearIzquierda colorLetra">{{"vecinos.nomenclatura" | translate}}:</label><label type="text" name="num_inmueble" id="num_inmueble" class="alinearIzquierda colorLetra">{{this.objEditarActivo.num_inmueble}}</label>
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" style="text-align: initial;">
+                    <label for="coeficiente" class="alinearIzquierda colorLetra">{{"vecinos.escribeCoeficiente" | translate}}</label>
+                    <input type="number" formControlName='coeficiente' name="coeficiente" id="coeficiente" class="form-control">
+                    <span class="textError" *ngIf="this.coeficiente">El campo no puede quedar vacío</span>
+                  </div>
+
+
+                <!-- Cuartos utiles -->
+                <div class="custom-control custom-switch col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv alinearIzquierda">
+                    <input type="checkbox" class="custom-control-input alinearIzquierda" id="checkCuartoUtil"  [checked]='this.mostrarCuartoUtil' (click)="this.accion(1)">
+                    <label class="custom-control-label" for="checkCuartoUtil" style="margin-left: 4%;">
+                      {{"vecinos.tieneCuarto" | translate}}
+                    </label>
+                    <span class="textError" *ngIf="this.cuartos">Verifica este campo</span>
+                </div>
+                <div formArrayName="cuartosUtiles" class="placas">
+                    <div *ngIf="mostrarCuartoUtil">
+                    <div *ngFor="let item of cuartosUtiles.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                            <label for="nomenclaturaUtil" class="alinearIzquierda colorLetra">{{"vecinos.escribeNomenclatura" | translate}}</label>
+                            <input type="text" formControlName='nomenclaturaCuartoUtil' name="nomenclaturaUtil" id="nomenclaturaUtil" class="form-control">
+                            <div (click)="this.deleteCuartoUtil(pointIndex)" class="icon-trash"></div>
+                        </div>
+                    </div>
+                    <div class="custom-control custom-switch col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv alinearIzquierda">
+                        <label class="colorLetra" style="margin-right: 20px;margin-left: -20px;"><strong class="agregarMas" id="agredarUtil" (click)='this.addCuartosUtiles()'>+</strong></label>
+                        <label class="descriptionAddMore">{{"vecinos.tieneOtroCuarto" | translate}}</label>
+                    </div>
+                </div>
+                </div>
+                <!-- Fin cuartos utiles -->
+
+                <!-- Vehiculos -->
+                <div class="custom-control custom-switch col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv alinearIzquierda">
+                    <input type="checkbox" class="custom-control-input alinearIzquierda" id="checkVehiculo"  [checked]='this.mostrarVehiculo' (click)="this.accion(2)">
+                    <label class="custom-control-label" for="checkVehiculo" style="margin-left: 4%;">
+                      {{"vecinos.tieneVehiculo" | translate}}
+                    </label>
+                    <span class="textError" *ngIf="this.vehiculos">Verifica este campo</span>
+                </div>
+                <div *ngIf="mostrarVehiculo" formArrayName="vehiculos" class="placas">
+                    <div *ngFor="let item of vehiculo.controls; let pointIndex=index" [formGroupName]="pointIndex">
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                            <label for="elegirVehiculo" class="alinearIzquierda colorLetra">
+                              {{"vecinos.eligeTipoVehiculo" | translate}}
+                            </label>
+                            <select type="text" formControlName='tipoVehiculo' name="elegirVehiculo" id="elegirVehiculo" class="form-control">
+                              <option value="carro">{{"vecinos.carro" | translate}}</option>
+                              <option value="moto">{{"vecinos.moto" | translate}}</option>
+                              <option value="bicicleta">{{"vecinos.bicicleta" | translate}}</option>
+                          </select>
+                            <div (click)="this.deleteVehiculo(pointIndex)" class="icon-trash"></div>
+
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                            <label for="describirVehiculo" class="alinearIzquierda colorLetra">
+                              {{"vecinos.describeVehiculo" | translate}}
+                            </label>
+                            <input type="text" formControlName='descripcion' name="describirVehiculo" id="describirVehiculo" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="custom-control custom-switch col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv alinearIzquierda">
+                        <label class="colorLetra" style="margin-right: 20px;margin-left: -20px;"><strong class="agregarMas" id="agregarVehiculo" (click)='this.addvehiculo()'>+</strong></label>
+                        <label class="descriptionAddMore">{{"vecinos.tieneOtroVehiculo" | translate}}</label>
+                    </div>
+                </div>
+                <!-- Fin vehiculos -->
+
+                <!-- Celdas -->
+                <div class="custom-control custom-switch col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv alinearIzquierda">
+                    <input type="checkbox" class="custom-control-input alinearIzquierda" id="checkCelda"  [checked]='this.mostrarCelda' (click)="this.accion(4)">
+                    <label class="custom-control-label" for="checkCelda" style="margin-left: 4%;">
+                      {{"vecinos.tieneCelda" | translate}}
+                    </label>
+                    <span class="textError" *ngIf="this.celdas">Verifica este campo</span>
+                </div>
+                <div *ngIf="mostrarCelda" formArrayName="celdas" class="placas">
+                    <div *ngFor="let item of celda.controls; let pointIndex=index" [formGroupName]="pointIndex">
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                            <label for="numeroCelda" class="alinearIzquierda colorLetra">
+                              {{"vecinos.escribeNumCelda" | translate}}
+                            </label>
+                            <input type="text" formControlName='numero' name="numeroCelda" id="numeroCelda" class="form-control">
+                            <div (click)="this.deleteCelda(pointIndex)" class="icon-trash"></div>
+                        </div>
+                    </div>
+
+                    <div class="custom-control custom-switch col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv alinearIzquierda">
+                        <label class="colorLetra" style="margin-right: 20px;margin-left: -20px;"><strong class="agregarMas" id="agregarCelda" (click)='this.addcelda()'>+</strong></label>
+                        <label class="descriptionAddMore">{{"vecinos.tieneOtraCelda" | translate}}</label>
+                    </div>
+                </div>
+                <!-- Fin Celdas -->
+
+                <!-- Mascotas -->
+                <div class="custom-control custom-switch col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv alinearIzquierda">
+                    <input type="checkbox" class="custom-control-input alinearIzquierda" id="checkMascota"  [checked]='this.mostrarMascota' (click)="this.accion(3)">
+                    <label class="custom-control-label" for="checkMascota" id="checkMascota" style="margin-left: 4%;">
+                      {{"vecinos.tieneMascota" | translate}}
+                    </label>
+                    <span class="textError" *ngIf="this.mascotas">Verifica este campo</span>
+                </div>
+                <div *ngIf="mostrarMascota" formArrayName="mascotas" class="placas">
+                    <div *ngFor="let item of mascota.controls; let pointIndex=index" [formGroupName]="pointIndex">
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                            <label for="tipoMascota" class="alinearIzquierda colorLetra">
+                              {{"vecinos.queTipoMascota" | translate}}
+                            </label>
+                            <input type="text" formControlName='tipoMascota' name="tipoMascota" id="tipoMascota" class="form-control">
+                            <div (click)="this.deleteMascota(pointIndex)" class="icon-trash"></div>
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                            <label for="descripcion" class="alinearIzquierda colorLetra">
+                              {{"vecinos.describeMascota" | translate}}
+                            </label>
+                            <input type="text" formControlName='descripcion' name="descripcion" id="descripcion" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="custom-control custom-switch col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv alinearIzquierda">
+                        <label class="colorLetra" style="margin-right: 20px;margin-left: -20px;"><strong class="agregarMas" id="agregarMascota" (click)='this.addmascota()'>+</strong></label>
+                        <label class="descriptionAddMore">{{"vecinos.tieneOtraMascota" | translate}}</label>
+                    </div>
+                </div>
+                <!-- Fin mascotas -->
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv" style="text-align: initial;">
+                    <label for="numero_fijo" class="alinearIzquierda colorLetra">
+                      {{"vecinos.cualEsSuNumero" | translate}}
+                    </label>
+                    <input type="text" name="numero_fijo" formControlName='numero_fijo' id="numero_fijo" class="form-control">
+                    <span class="textError" *ngIf="this.numerofijo">
+                      El campo no puede quedar vacío
+                    </span>
+                  </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 centrarDiv">
+                    <button type="submit" class="btnReturnStep" (click)='this.cancel()'>{{"global.regresar" | translate}}</button>
+                    <button type="submit" (click)='this.valida();' class="btnSaveUpdate">{{"vecinos.guardaDatos" | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

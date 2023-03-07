@@ -1,0 +1,137 @@
+<div class="row" *ngIf='!this.cargando'>
+    <form [formGroup]='carteleraForm'>
+        <div class="container crearCartelera">
+            <div class="row">
+                <div class="col-12 seccion1">
+                    <div class="seccion1-1">
+                        <h2>{{"cartelera.cartelera" | translate}}</h2>
+                        <h3>{{"cartelera.ingresaInfoPublicacion" | translate}}</h3>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="col-12 seccion2">
+                    <div class="seccion2-1">
+                        <label for="title">{{"cartelera.creartitulo" | translate}}*</label>
+                        <input formControlName='title' type="text" name="title" id="title">
+                        <span class="textError" *ngIf="this.carteleraForm.get('title').errors?.required &&(carteleraForm.controls['title'].touched)">
+                          El campo no puede quedar vacío
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-12 seccion3">
+                    <label for="image" style="text-align: left;margin-left: 15px;">{{"cartelera.agregarImagen" | translate}}*</label>
+                    <div style="position: relative;display: block;"><span class="avatar rounded-circle">
+                        <img id="imagenCartelera" class="logoUnidapp" alt="" [src]="this.carteleraForm.get('images').value" style="object-fit: cover; object-position: center;" height="200px" width="200px"></span>
+                    </div>
+                    <div class="seccion3-1">
+                        <input accept=".jpeg, .jpg, .png" (change)='onFileSelect($event)' #fileInput type="file" name="image" id="image">
+                    </div>
+                </div>
+
+                <div class="col-12 seccion4">
+                    <div class="seccion4-1">
+                        <label style="text-align: left;" for="description">{{"cartelera.creaContenidoPubli" | translate}}</label>
+                        <ckeditor formControlName="description" [editor]="Editor" id="description" data="Escribe aquí el contenido de la publicación..."></ckeditor>
+
+                    </div>
+                    <span class="textError" *ngIf="this.carteleraForm.get('description').errors?.required &&(carteleraForm.controls['description'].touched)">
+                      El campo no puede quedar vacío
+                    </span>
+                </div>
+
+                <div class="col-7 seccion5" style="text-align: left; margin-left: 10px;">
+                    <div class="col-12">
+                        <label  for="start_date">{{"cartelera.ingresaFecha" | translate}}*</label>
+                        <input class="col-5" formControlName='start_date' type="date" name="inicioPublicacion" id="start_date">>
+                        <span class="textError" *ngIf="this.carteleraForm.get('start_date').errors?.required &&(carteleraForm.controls['start_date'].touched)">
+                          El campo no puede quedar vacío
+                        </span>
+                        <input class="col-5" formControlName='end_date' type="date" name="finPublicacion" id="end_date" (blur)='this.validaFechaFin()'>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="col-12">
+                        <label for="author">{{"cartelera.ingresaNombreAutor" | translate}}*</label>
+                        <input formControlName='author' type="text" name="author" id="author">
+                    </div>
+                    <span class="textError" *ngIf="this.carteleraForm.get('author').errors?.required &&(carteleraForm.controls['author'].touched)">
+                      El campo no puede quedar vacío
+                    </span>
+                </div>
+
+                <div class="col-7 seccion5" style="text-align: left; margin-left: 10px;">
+                    <div class="col-12">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" formControlName='is_important'  [checked]='this.carteleraForm.value.is_important' class="custom-control-input" id="masImportante">
+                            <label class="custom-control-label" for="masImportante" id="masImportante" style="font-style: italic; padding: 3px;">{{"cartelera.publicacionImportante" | translate}}</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                    <div class="col-12">
+                        <div class="alert alert-primary" role="alert">
+                            <div class="row">
+                                <div class="col-1">
+                                    <img src="assets/img/exclamation.svg" class="icon-exc" />
+                                </div>
+                                <div class="col-11" style="text-align: left;">
+                                    <p style="font-weight: bold; font-size: 14px; margin-bottom: 0px;">{{"cartelera.tituloTextoBoton" | translate}}</p>
+                                    <p style="font-size: 14px;">{{"cartelera.cuerpoTextoBoton" | translate}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                <div class="col-5 seccion5" style="text-align: left; margin-left: 10px;">
+                    <div class="col-12">
+                            <label for="link">{{"cartelera.textButton" | translate}}</label>
+                            <input formControlName='btn_text' type="link" name="link" id="link">
+                    </div>
+                </div>
+
+                <div class="col-6 seccion5" style="text-align: left; margin-left: 10px;">
+                    <div class="col-12">
+                            <label for="link">{{"cartelera.hipervinculo" | translate}}</label>
+                            <input formControlName='link' type="link" name="link" id="link">
+                    </div>
+                </div>
+
+                <div class="col-12 seccion8">
+                    <div class="seccion8-1">
+                        <button (click)='this.onPropagar()' class="btnReturnStep">{{"cartelera.regresar" | translate}}</button>
+                        <button (click)='this.uploadFile();submitButton.disabled = true' #submitButton [disabled]='this.carteleraForm.invalid' class="btnSaveUpdate">{{"cartelera.publicala" | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" *ngIf='this.cargando'>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <img type="image" src="../../../../assets/img/authorization/load_house.gif" style="height: 80%;" />
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            </div>
+        </div>
+    </div>
+</div>

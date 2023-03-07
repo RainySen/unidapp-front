@@ -1,0 +1,90 @@
+<div *ngIf='this.cargo'>
+    <img type="image" class="loading" src="../../../../assets/img/authorization/load_house.gif" />
+</div>
+
+<div class="fondo">
+
+    <div class="ErrorMessage" *ngIf='this.ErrorMessage400 && this.const < 5 && this.const < 4'>
+        <p class="firstline">{{"login.mensaje1Error400" | translate}}</p>
+        <p class="secondline">{{"login.mensaje2Error400" | translate}}</p>
+        <p class="tirline">{{"login.mensaje3Error400" | translate}}</p>
+    </div>
+
+    <div class="ErrorMessage" *ngIf='this.ErrorMessage400 && this.const == 4'>
+        <p class="firstline">{{"login.mensaje4Error400" | translate}}</p>
+        <p class="secondline">{{"login.mensaje5Error400" | translate}}</p>
+    </div>
+
+    <div class="ErrorMessage" *ngIf='this.ErrorMessage401'>
+        <p class="firstline">{{"login.mensaje1Error401" | translate}}</p>
+        <p class="secondline">{{"login.mensaje2Error401" | translate}}</p>
+    </div>
+
+    <div class="ErrorMessage" *ngIf='this.ErrorMessage403'>
+        <p class="firstline">{{"login.mensaje1Error403" | translate}}</p>
+        <p class="secondline">{{"login.mensaje2Error403" | translate}}</p>
+        <p class="tirline">{{"login.mensaje3Error403" | translate}}</p>
+    </div>
+
+    <div class="ErrorMessage" *ngIf='this.ErrorMessage405'>
+        <p class="firstline">{{"login.mensaje1Error405" | translate}}</p>
+        <p class="secondline">{{"login.mensaje2Error405" | translate}}</p>
+        <p class="tirline">{{"login.mensaje3Error405" | translate}}</p>
+    </div>
+
+    <div class="marco" id="marco">
+        <br>
+        <form class="col-xs-12 col-sm-12 container" [formGroup]="credenciales">
+            <div class="form-group">
+                <div class="logo"></div>
+                <br>
+                <div class="textInit"><strong>{{"login.ingresaCuenta" | translate}}</strong></div>
+                <br>
+                <br>
+                <label class="control-label">{{"login.user" | translate}}</label>
+                <div>
+                    <input class="form-control" formControlName="username" type="text" name="user" id="users" placeholder='{{"login.correoElectronico" | translate}}' >
+
+
+                    <span *ngIf="this.credenciales.get('username').hasError('required') && this.credenciales.get('username').touched">
+                            <div class="alert alert-danger mt-2" role="alert">{{"login.campoRequerido" | translate}}</div>
+                    </span>
+
+                    <span *ngIf="this.credenciales.get('username').hasError('pattern')">
+                            <div class="alert alert-danger mt-2" role="alert">{{"login.formatoNovalido" | translate}}</div>
+                    </span>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="password">{{"login.password" | translate}}</label>
+                <div class="" >
+                    <input class="form-control" formControlName="password" type="password" name="password" id="password" placeholder='{{"login.contrasena" | translate}}' required>
+                    <span id="imgContrasena" data-activo=false ><img (click)='this.contrase()'  [ngClass]="{'hidenPassword': this.show == false, 'showPassword': this.show == true}"></span>
+
+
+
+
+
+
+
+                    <span *ngIf="this.credenciales.get('password').hasError('required') && this.credenciales.get('password').touched">
+                            <div class="alert alert-danger mt-2 alertError" role="alert">
+                                {{"login.campoRequerido" | translate}}
+                            </div>
+                        </span>
+                </div>
+                <a class="olvidoContra" href="#" routerLink='/recuperarpassword'>{{"login.olvidoContrasena" | translate}}</a>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+            <div class="form-group">
+                <div class="">
+                    <button [disabled]="this.credenciales.invalid" class="btn btn-info btnIngresar" (click)='login()'>{{"login.btnLogin"|translate}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

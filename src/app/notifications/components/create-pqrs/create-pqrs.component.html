@@ -1,0 +1,63 @@
+<div class="container col-12">
+  <div class="mt-5">
+    <div class="col-12">
+      <div class="form-group">
+        <label class="font-weight-bold Titulo"><strong>{{"pqrs.respondePqrs" | translate}}</strong></label>
+    </div>
+    <div class="form-group">
+        <label class="subtitulo">{{"pqrs.mensaje1" | translate}}</label>
+    </div>
+
+    <br>
+
+
+    <!-- BARRA DE PROGRESO -->
+    <div class="barra">
+      <div class="progress progress-striped">
+          <div class="progress-bar progress-bar-danger" role="progressbar"
+               aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+               style="width: 100%">
+            <span class="sr-only">100% completado</span>
+          </div>
+      </div>
+      <div class="letrasBarra">
+          <span class="izquierda" ><strong>Datos de la solicitud</strong></span>
+          <div><span class="red">d</span><strong>Respuesta</strong></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-11 offset-1 seccion4" style="padding-top: 5%; margin-left: 9%; text-align: initial;">
+    <div class="seccion4-1" style="text-align: initial;">
+        <label for="description"><b>{{"pqrs.creaPqrs" | translate}}</b></label>
+        <ckeditor  formControlName="description" [editor]="Editor" id="description" data="Escribe aquí el mensaje que quieres darle al vecino..." [config]="{ placeholder: contenidoPlaceholder }"></ckeditor>
+    </div>
+  <br>
+  </div>
+
+
+    <div class="form-group">
+      <label style="margin-right: 12em;"><b>{{"pqrs.estadoSolicitud" | translate}}</b></label><br>
+      <select  style="margin-right: -3em;" class="inputEdit" formControlName="tipo_establec" id="exampleFormControlSelect1">
+        <option value="Editado">{{"pqrs.editado" | translate}}</option>
+        <option value="Propiedad Horizontal">{{"establecimiento.propiedadHorizontal" | translate}}</option>
+        <option value="Propiedad Vertical">{{"establecimiento.propiedadVertical" | translate}}</option>
+        <option value="Propiedad Mixta">{{"establecimiento.propiedadMixta" | translate}}</option>
+        <option value="Centro Comercial">{{"establecimiento.centroComercial" | translate}}</option>
+        <option value="Bodegas">{{"establecimiento.bodegas" | translate}}</option>
+        <option value="Other">{{"establecimiento.otros" | translate}}</option>
+      </select>
+    </div>
+
+
+
+    <div class="seccion8">
+      <div class="seccion8-1">
+          <button  (click)="this.backPqrs()" class="btnReturnStep">{{"pqrs.regresar" | translate}}</button>
+          <button  class="btnSaveUpdate">{{"pqrs.cerrar" | translate}}</button>
+      </div>
+  </div>
+</div>
+

@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="row">
+        <form [formGroup]="establecimiento">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label style="color: #7D368A; font-size: 24px; font-weight: bold;">{{"establecimiento.editaEstablecimiento" | translate}}</label>
+                </div>
+                <div class="form-group">
+                    <label style="font-size: 20px; width: 45%;">{{"establecimiento.editarEsFacil" | translate}}</label>
+                </div>
+                <br>
+
+                <div *ngIf='this.num == 1'>
+
+                    <div class="row">
+                        <div class="col-3"></div>
+                        <div class="col-md-6" style="text-align: center;">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 55%; background-color: #7D368A;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6" style="text-align: left;"><span class="red">d</span>Datos establecimiento</div>
+                                <div class="col-6" style="text-align: right; color: #1F203880;"><span class="grey">d</span>Datos administrador</div>
+                            </div>
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+
+                    <div style="position: relative;display: block;">
+                        <div class="container">
+                            <div class="input-group">
+                                <label class="input-group-btn">
+                                    <span class="btn btn-file">
+                                        <img class="logoUnidapp" alt="" [src]="this.establecimiento.get('ruta_imagen_establ').value" height="200px" width="200px">
+                                        <input hidden accept=".jpg,.png,.jpeg,.gif" class="hidden" name="banner" type="file" (change)='onFileSelect($event)' #fileInput>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label>{{"establecimiento.logoEstablecimiento" | translate}}</label>
+                    <br>
+
+
+                    <div class="form-group">
+                        <label style="margin-right: 10em;">{{"establecimiento.codigoEstablecimiento" | translate}}*</label><br>
+                        <input class="inputEdit" disabled formControlName="cod_establec">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 16em;">{{"establecimiento.razonsocial" | translate}}*</label><br>
+                        <input class="inputEdit" formControlName="nom_establec">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 9em;">{{"establecimiento.nombreEstablecimiento" | translate}}*</label><br>
+                        <input class="inputEdit" formControlName="nom_corto_establec">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 11em;">{{"establecimiento.tipoEstablecimiento" | translate}}*</label><br>
+                        <select class="inputEdit" formControlName="tipo_establec" id="exampleFormControlSelect1">
+                          <option value="Empresa">{{"establecimiento.empresa" | translate}}</option>
+                          <option value="Propiedad Horizontal">{{"establecimiento.propiedadHorizontal" | translate}}</option>
+                          <option value="Propiedad Vertical">{{"establecimiento.propiedadVertical" | translate}}</option>
+                          <option value="Propiedad Mixta">{{"establecimiento.propiedadMixta" | translate}}</option>
+                          <option value="Centro Comercial">{{"establecimiento.centroComercial" | translate}}</option>
+                          <option value="Bodegas">{{"establecimiento.bodegas" | translate}}</option>
+                          <option value="Other">{{"establecimiento.otros" | translate}}</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btnFirstStep" (click)='this.pasos(2)'>{{"global.siguientepaso" | translate}}</button>
+                </div>
+
+                <div *ngIf='this.num == 2'>
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-3"></div>
+                        <div class="col-md-6" style="text-align: center;">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%; background-color: #7D368A;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6" style="text-align: left; color: #1F203880;"><span class="red">d</span>Datos establecimiento</div>
+                                <div class="col-6" style="text-align: right;"><span class="grey">d</span>Datos administrador</div>
+                            </div>
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 10rem;">{{"establecimiento.telefonoContactoPrincipal" | translate}}</label><br>
+                        <input class="inputEdit" formControlName="celular">
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-right: 9rem;">{{"establecimiento.telefonoContactoAlternativo" | translate}}</label><br>
+                        <input class="inputEdit" formControlName="telefono">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 10rem;">{{"establecimiento.correoEstablecimiento" | translate}}</label><br>
+                        <input class="inputEdit" formControlName="correo">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="margin-right: 9rem;">{{"establecimiento.direccionEstablecimiento" | translate}}</label><br>
+                        <input class="inputEdit" formControlName="direccion">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-2" style="margin-right: 1%;">
+                            <button type="submit" class="btnReturnStep" (click)='this.pasos(1)'>{{"establecimiento.regresaPaso" | translate}}</button>
+                        </div>
+                        <div *ngIf='this.permisos.modificacion == "S"' class="col-md-2">
+                            <button type="submit" class="btnSaveUpdate" [disabled]='this.establecimiento.invalid' (click)='this.uploadFile()'>{{"global.guardar" | translate}}</button>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

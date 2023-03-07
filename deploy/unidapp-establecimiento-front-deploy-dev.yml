@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: #{Name-Space}#
+  name: #{Image-Name}#
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: #{Image-Name}#
+  template:
+    metadata:
+      labels:
+        app: #{Image-Name}#
+    spec:
+      containers:
+      - name: #{Image-Name}#
+        image: #{Acr-Dev}#/#{Image-Name}#:#{Image-Version}#
+        ports:
+        - containerPort: 80
+        
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+          limits:
+            cpu: 150m
+            memory: 500Mi
+        imagePullPolicy: Always            
+      imagePullSecrets:  
+      - name: #{secret}#
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: #{Name-Space}#
+  name: #{Image-Name}#
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: #{Image-Name}#

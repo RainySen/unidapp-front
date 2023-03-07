@@ -1,0 +1,133 @@
+<div class="row" *ngIf='!this.cargando'>
+    <form [formGroup]='noticiasForm'>
+        <div class="container col-12 crearCartelera">
+            <div class="row">
+                <div class="col-10 offset-1 seccion2" style="padding-bottom: 5%;">
+                    <div class="seccion2-1" style="text-align: initial;">
+                        <label for="title">{{"cartelera.creatitulo" | translate}}*</label>
+                        <input formControlName='title' type="text" name="title" id="title" required placeholder='{{"cartelera.ingresaTitulo" | translate}}'>
+                        <span class="textError" *ngIf="this.noticiasForm.get('title').errors?.required &&(noticiasForm.controls['title'].touched)">
+                          El campo no puede quedar vacío
+                        </span>
+                    </div>
+                </div>
+
+                <div formArrayName="images">
+                    <!-- {{imagenes.controls | json}} -->
+                  <div class="col">
+                    <div class="row">
+
+
+
+
+                        <div class="col-6" style="height: 130px; margin-bottom: 5%;" *ngFor="let item of imagenes.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                          <label class="aggImagen" for="image">{{"cartelera.agregarImagen" | translate}}</label>                          
+                          <span class="btn btn-file styleButton">
+                              <div id='contador' hidden>{{pointIndex}}</div>
+                              <img class="imgNone" *ngIf="this.new.images" id="img{{pointIndex}}" alt="" (click)='this.imageInsert(pointIndex)' [src]='this.new.images[pointIndex].image'>
+                              <img class="imgNone" *ngIf="!this.new.images" id="img{{pointIndex}}" alt="" (click)='this.imageInsert(pointIndex)' src="https://firebasestorage.googleapis.com/v0/b/paco-prod.appspot.com/o/default%2FimgDefault.png?alt=media&token=ed7b8995-aa00-4663-a927-4ae8868d3333">
+                              <input hidden accept=".jpg,.png,.jpeg,.gif" class="hidden" id="selectImagen{{pointIndex}}"  name="banner" type="file" (change)='onFileSelect($event,pointIndex)' #fileInput>
+                          </span>
+                        </div>
+
+
+
+
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-10 offset-1 seccion4" style="padding-top: 5%; text-align: initial;">
+                    <div class="seccion4-1" style="text-align: initial;">
+                        <label for="description">{{"cartelera.creaContenidoPubli" | translate}}*</label>
+                        <ckeditor formControlName="description" [editor]="Editor" id="description" data="Escribe aquí la descripcion de la noticia..." [config]="{ placeholder: contenidoPlaceholder }"></ckeditor>
+                    </div>
+                    <span class="textError" *ngIf="this.noticiasForm.get('description').errors?.required  &&(noticiasForm.controls['description'].touched)">
+                      El campo no puede quedar vacío
+                    </span>
+                </div>
+
+
+
+                <div class="col-12">
+                  <div class="row">
+                            <div class="col-8" style="margin-left: 45px;margin-right: -104px;">
+                              <div class="col-12">
+                                <div class="row">
+                                  <label for="start_date">{{"cartelera.ingresaFecha" | translate}}</label>
+                                  <div class="col-5">
+                                    <input formControlName='start_date' type="date" name="inicioPublicacion" id="start_date" (blur)='this.validaFechaIni()'>
+                                  </div> >
+                                  <div class="col-5">
+                                    <input formControlName='end_date' type="date" name="finPublicacion" id="end_date" (blur)='this.validaFechaFin()'>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+
+                          <div class="col-4" style="text-align: initial;margin-top:1%">
+                                  <label for="author">{{"cartelera.ingresaNombreAutor" | translate}}*</label>
+                                  <input formControlName='author' type="text" name="author" id="author" placeholder="Administrador">
+                                  <span class="textError" *ngIf="this.noticiasForm.get('author').errors?.required &&(noticiasForm.controls['author'].touched)">
+                                    El campo no puede quedar vacío
+                                  </span>
+                           </div>
+                  </div>
+                </div>
+
+                <div class="col-10 offset-1" style="text-align: left; padding-left: 0px; padding-right: 0px;">
+
+                    <div class="col-12">
+                        <div class="alert alert-primary" role="alert">
+                            <div class="row">
+                                <div class="col-1" style="margin-right: 2%;">
+                                    <img src="assets/img/exclamation.svg" class="icon-exc" />
+                                </div>
+
+                                <div class="col-11 texto-ayuda">
+                                    <p style="font-weight: bold; font-size: 14px; margin-bottom: 0px;">{{"cartelera.tituloTextoBoton" | translate}}</p>
+                                    <p style="font-size: 14px;">{{"cartelera.cuerpoTextoBoton" | translate}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-5 offset-1 seccion6">
+                    <div class="seccion6-2 col-12">
+                        <label>{{"cartelera.ingresaTextoBoton" | translate}}</label>
+                        <input formControlName='btn_text' type="text" name="btn_text" id="btn_text" placeholder="Inscribete al evento...">
+                    </div>
+                </div>
+
+                <div class="col-5 seccion6">
+                    <div class="seccion6-2 col-12">
+                        <label>{{"cartelera.ingresaEnlace" | translate}}</label>
+                        <input formControlName='link' type="text" name="link" id="link" placeholder="https://www.youtube.com/">
+                    </div>
+                </div>
+
+                <div class="col-12 seccion8">
+                    <div class="seccion8-1">
+                        <button (click)='this.onPropagar()' class="btn btn-white">{{"cartelera.regresar" | translate}}</button>
+                        <button (click)='this.guardar();submitButton.disabled = true' #submitButton class="btn btn-primary">{{"cartelera.publicala" | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" *ngIf='this.cargando'>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <img type="image" src="../../../../assets/img/authorization/load_house.gif" style="height: 80%;" />
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            </div>
+        </div>
+    </div>
+</div>

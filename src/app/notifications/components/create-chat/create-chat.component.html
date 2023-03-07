@@ -1,0 +1,119 @@
+<div>
+    <form [formGroup]="chatForm">
+    <br>
+    <p class="tittleCard">{{"cartelera.crearNotificacion" | translate}}</p>
+    <p class="subTittleCard">{{"cartelera.ingresaInfoNotificacion" | translate}}</p>
+    <br>
+
+    <p class="subTittleCard">{{"cartelera.category" | translate}}<button data-toggle="modal" data-target="#createCategory" class="btn btn-primary botonMas"> {{"cartelera.createCategory" | translate}}</button></p>
+
+
+
+  <div class="modal fade" id="createCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Crear categoria</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+
+
+
+            <div class="modal-body">
+                <form [formGroup]="this.categoryForm">
+
+                      <div class="form-group">
+                        <label for="name">{{"cartelera.name" | translate}}</label>
+                        <input class="form-control" formControlName='name' type="text" name="name" id="name">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">{{"cartelera.description" | translate}}</label>
+                        <textarea class="form-control" formControlName='description' id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="criticity">{{"cartelera.criticity" | translate}}</label>
+                        <select formControlName='criticity' class="custom-select" id="criticity">
+                            <option value="1">Alta</option>
+                            <option value="2">Media</option>
+                            <option value="3">Baja</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                            <input type="checkbox" formControlName='requireAnswer' class="custom-control-input" id="requireAnswer">
+                            <label class="custom-control-label" for="requireAnswer" id="requireAnswer" style="padding: 3px;">
+                              {{"cartelera.requireAnswer" | translate}}
+                            </label>
+                       </div>
+                </form>
+                    <div class="row">
+                        <div class="col-1">
+                         </div>
+                        <div class="col-3">
+                            <button type="button" class="btn btn-primary btnBack" data-dismiss="modal" aria-label="Close">Cancelar
+                            </button>
+                        </div>
+                        <div class="col-2">
+
+                        </div>
+                        <div class="col-3">
+                            <button [disabled]='this.categoryForm.invalid' (click)='this.crearCategoria()' data-dismiss="modal" class="btn btn-primary btnSend">Crear</button>
+                        </div>
+                    </div>
+            </div>
+         </div>
+      </div>
+    </div>
+
+
+    <p class="tittleText">{{"cartelera.eligeCategoria" | translate}}</p>
+    <select class="form-control selectDropDown" [(ngModel)]="selectedCategory" formControlName="categoria" id="categoria">
+        <option *ngFor="let categoria of this.categorias; index as i" [ngValue]="categoria">{{categoria.name}}</option>
+    </select>
+
+
+    <div *ngIf="this.cargando" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 loading">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <img type="image" src="../../../../assets/img/authorization/load_house.gif" style="height: 80%;" />
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div *ngIf='this.chatForm.get("categoria").valid'>
+    <p class="tittleText">{{"cartelera.eligeInmueble" | translate}}</p>
+    <select class="form-control selectDropDown" id="exampleFormControlSelect1" formControlName="idInmueble" (change)="this.getUsers()">
+        <option *ngFor="let inmueble of this.infoInmuebles; index as i" [value]="inmueble._id">{{inmueble.num_inmueble}}</option>
+    </select>
+    </div>
+
+    <div *ngIf='this.chatForm.get("idInmueble").valid'>
+    <br>
+    <p class="tittleText">{{"cartelera.eligeVecino" | translate}}</p>
+    <select class="form-control selectDropDown" id="exampleFormControlSelect1" formControlName="idusuario">
+        <option *ngFor="let inmueble of this.users; index as i" [value]="inmueble._id">{{inmueble.nombres}}</option>
+    </select>
+
+    <br>
+    <div *ngIf='this.chatForm.get("idusuario").valid'>
+    <p class="tittleText">{{"cartelera.creaContenidoNoti" | translate}}</p>
+    <ckeditor formControlName="messaje" [editor]="Editor" data="Escribe aquí el mensaje que quieres darle al vecino...."></ckeditor>
+    </div>
+</div>
+    </form>
+
+</div>
+<br>
+<button class="btnBack" (click)='regresar()'>{{"cartelera.regresar" | translate}}</button>
+<button class="btnSend" *ngIf='this.chatForm.valid' (click)='this.createMessage()'>Enviar</button>
+
+

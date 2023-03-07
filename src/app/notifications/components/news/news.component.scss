@@ -1,0 +1,135 @@
+.cabeza{
+    text-align: left;
+    color: #000D3D;
+    padding-left: 0px;
+    margin-top: 20px;
+}
+
+.padding{
+  margin-left: 0px;
+}
+.cabezaNoticia {
+    text-align: left;
+    font: normal normal normal 20px/29px Raleway;
+    letter-spacing: 0px;
+    color: #525F7F;
+    opacity: 1;
+}
+h2{
+    margin: 0px;
+    color: var(--unnamed-color-7d368a);
+    text-align: left;
+    font: normal normal bold 25px/25px Raleway;
+    letter-spacing: 0px;
+    color: #7D368A;
+    opacity: 1;
+}
+.card{
+    border-radius: 0.6rem;
+    margin-top: 1rem;
+}
+.botones{
+    display: flex;
+    float: right;
+}
+.boton1{
+    background: url(../../../../assets/img/sprite.svg) no-repeat;
+    background-position: 18.2% 13.3%;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 20px;
+    height: 20px;
+    background-size: 80em;
+    margin: 0.25rem;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.boton1:hover{
+    background-color: #6868F4;
+}
+.boton2{
+    background: url(../../../../assets/img/sprite.svg) no-repeat;
+    background-position: 19.959% 13.29%;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 20px;
+    height: 20px;
+    background-size: 80em;
+    margin: 0.25rem;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.boton2:hover{
+    background-color: #C840E9;
+}
+.fecha{
+    border: 0.1px solid #CEEFFF;
+    width: 90px;
+    height: 80px;
+    margin-left: auto;
+    border-radius: 0rem 0.6rem 0rem 0rem;
+    background: #CEEFFF 0% 0% no-repeat padding-box;
+    font: normal normal normal 25px/10px Raleway;
+    line-height: 23px;
+    color: #000D3D;
+}
+.puntosSuspensivosTitulo {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:1;
+}
+.puntosSuspensivos {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+}
+.card-body{
+    padding: 0rem 0rem 0rem 0rem;
+}
+.card-title{
+    margin: 0rem 1rem 0rem 1rem;
+    text-align: left;
+    font-size: 18px;
+}
+.card-subtitle{
+    color: #3DB5FF;
+    margin: 0rem 1rem 0.5rem 1rem;
+    text-align: left;
+}
+.card-text{
+    margin: 1rem 1rem 0.5rem 1rem;
+    text-align: left;
+    height: 50px;
+}
+.card-text-fecha{
+    text-align: center;
+    margin: 0rem 0rem 0rem 0rem;
+    margin-top: 1rem;
+}
+.imagenVacia {
+    background: url(../../../../assets/img/carteleraVacia.png) no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 45rem;
+    border-radius: 7px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.azul{
+    background-color: #3DB5FF;
+    .card-body{
+        color: white;
+    }
+    .card-subtitle{
+        color: black;
+    }
+}
+.maximo{
+    max-width: 33.33%;
+}
+
+#list_news{
+  width: 100%;
+}

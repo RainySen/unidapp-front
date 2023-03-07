@@ -1,0 +1,56 @@
+<div class="fondo" *ngIf='this.formulario1'>
+    <div class="container">
+        <div class="fondoLogo">
+            <div class="logo"></div>
+        </div>
+        <div class="cuadro">
+            <h2>{{ "recuperarPass.titulo" | translate}}</h2>
+            <p class="parrafo">
+              {{ "recuperarPass.parrafo" | translate}}
+            </p>
+            <form [formGroup]="credenciales">
+                <div class="username form-group">
+                    <input class="correoValido" type="email" name="username" id="username" formControlName="username" required>
+                    <p *ngIf="this.credenciales.get('username').hasError('required') && this.credenciales.get('username').touched" class="animated fadeIn fast validacion">
+                      {{ "global.validEmail" |translate }}
+                    </p>
+                    <p *ngIf="this.credenciales.get('username').hasError('pattern')" class="animated fadeIn fast validacion">
+                      {{ "global.validEmail" |translate }}
+                    </p>
+                    <div *ngIf="this.cargando">
+                        <img type="image" src="../../../../assets/img/authorization/load_house.gif" style="width: 140px;" />
+                    </div>
+                </div>
+
+                <div class="grupoBotones">
+                    <button class="btn-cancelar" routerLink="/login">{{ "global.cancel" |translate }}</button>
+                    <button class="btn-enviar" [disabled]='this.credenciales.invalid' (click)="this.recuperar()">
+                      {{ "recuperarPass.sendEmail" | translate}}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="fondo" *ngIf='this.formulario2'>
+    <div class="container">
+        <div class="fondoLogo">
+            <div class="logo"></div>
+        </div>
+        <div class="cuadro">
+            <div class="fondoSobre">
+                <div class="icon-sobre"></div>
+            </div>
+            <h2 class="titulo2">{{ "recuperarPass.titulo2" | translate}}</h2>
+            <p class="parrafo">
+              {{ "recuperarPass.parrafo2" | translate}}
+            </p>
+            <div class="grupoBotones">
+                <button class="btn-enviar" routerLink="/login">{{ "recuperarPass.checkOut" | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

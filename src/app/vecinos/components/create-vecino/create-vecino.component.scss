@@ -1,0 +1,106 @@
+* {
+    font-family: 'Raleway', 'arial', sans-serif;
+}
+
+.alert-danger{
+    width: 38% !important;
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+}
+
+.centrarDiv {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titulos {
+    text-align: left;
+    font: Bold 30px/35px Raleway;
+    letter-spacing: 0px;
+    color: #7D368A;
+    opacity: 1;
+    text-align: center;
+}
+
+.textoTitulo {
+    text-align: center;
+    font-family: Regular 24px/29px Raleway;
+    letter-spacing: 0px;
+    color: #525F7F;
+    opacity: 1;
+}
+
+.textoInputs {
+    text-align: left;
+    font: Bold 14px/16px Raleway;
+    letter-spacing: 0px;
+    color: #000D3D;
+    opacity: 1;
+}
+
+.botonGuardar {
+    background: #3DB5FF 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    opacity: 1;
+    height: 2.7em;
+    color: white;
+    margin-left: 1%;
+}
+.btn-primary {    
+    border-color: #3DB5FF !important;
+}
+
+.botonRegresar {
+    background: none;
+    border-radius: 8px;
+    opacity: 1;
+    border-color: #3DB5FF;
+    color: #3DB5FF;
+    width: 145px;
+    height: 50px;
+    font: Regular 14px/16px Raleway;
+}
+
+.inputsAgregar {
+    background: #FFFFFF33 0% 0% no-repeat padding-box;
+    border: 1px solid #9DA5B5;
+    border-radius: 8px;
+    opacity: 1;
+}
+
+.agregarMas {
+    padding-right: 10px;
+    padding-left: 10px;
+    background: #3DB5FF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 12px 16px #455B631A;
+    border-radius: 8px;
+    opacity: 1;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+}
+
+.colorLetra {
+    font: Bold 14px/16px Raleway;
+    letter-spacing: 0px;
+    color: #000D3D;
+    opacity: 1;
+}
+
+.icon {
+    &-trash {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 130em;
+        padding: 25px;
+        float: left;
+        margin-top: -61px;
+        background-position: 15.3% 12.4%;
+        margin-left: 65%;
+        margin-right: 0px;
+        position: absolute;
+    }
+}

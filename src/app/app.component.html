@@ -1,0 +1,8 @@
+<main (mousemove)="detener()">
+    <div *ngIf="segundos <= 50 && minutos <= 0">
+        <div class="alert alert-danger" role="alert">
+            {{"cierreSesion.mensajeCierre" | translate}} {{minutos}}:{{segundos}}
+        </div>
+    </div>
+    <router-outlet #o="outlet"></router-outlet>
+</main>

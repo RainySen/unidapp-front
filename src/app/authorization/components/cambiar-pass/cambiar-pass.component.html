@@ -1,0 +1,129 @@
+<div class="fondo" *ngIf='this.alerta1'>
+    <div class="container">
+        <div class="fondoLogo">
+            <div class="logo"></div>
+        </div>
+        <div class="cuadro">
+            <h2>{{ "cambiarPass.titulo" | translate}}</h2>
+            <p class="parrafo">
+                {{"cambiarPass.parrafo" | translate}} <b>{{this.username}}</b>
+            </p>
+            <form [formGroup]="this.password">
+                <div class="password correo form-group">
+                  <div class=" ">
+                    <span id="imgContrasena" data-activo=false ><img class="padlock"></span>
+                    <input  class="form-control" type="password" name="password" id="password" formControlName="oldPassword" placeholder='{{"cambiarPass.actual" | translate}}' required>
+                    <span id="imgContrasena" data-activo=false ><img (click)='this.showPassword1()'  [ngClass]="{'hidenPassword': this.show == false, 'showPassword': this.show == true}"></span>
+                    <p *ngIf="this.password.get('oldPassword').hasError('required') && this.password.get('oldPassword').touched" class="animated fadeIn fast password">
+                        {{ "global.required" |translate }}
+                    </p>
+                  </div>
+                  <div>
+                    <span id="imgContrasena" data-activo=false ><img class="padlock"></span>
+                    <input class="form-control" type="password" name="password1" id="password1" formControlName="newPassword" placeholder='{{"cambiarPass.nueva" | translate}}' required>
+                    <span  id="imgContrasena" data-activo=false ><img class="eye" (click)='this.showPassword2()'  [ngClass]="{'hidenPassword': this.show2 == false, 'showPassword': this.show2 == true}"></span>
+                    <p *ngIf="this.password.get('newPassword').hasError('required') && this.password.get('newPassword').touched" class="animated fadeIn fast password">
+                        {{ "global.required" |translate }}
+                    </p>
+                  </div>
+                </div>
+                <div class="grupoBotones">
+                    <button class="btn-cancelar" routerLink="/login">{{ "global.cancel" |translate }}</button>
+                    <button class="btn-enviar" [disabled]='this.password.invalid' (click)='this.changePassword()'>
+                    {{"cambiarPass.saveit" | translate}}
+                  </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="fondo" *ngIf='this.alerta2'>
+    <div class="container">
+        <div class="fondoLogo">
+            <div class="logo"></div>
+        </div>
+        <div class="cuadro">
+            <div class="fondoSobre">
+                <div class="icon-sobre"></div>
+            </div>
+            <h2 class="titulo2">{{"cambiarPass.titulo2" | translate}}</h2>
+            <p class="parrafo">
+                {{"cambiarPass.parrafo2" | translate}}
+            </p>
+            <div class="grupoBotones">
+                <button class="btn-enviar" routerLink="/login">{{"cambiarPass.estrenarla" | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fondo" *ngIf='this.alerta3'>
+    <div class="container">
+        <div class="fondoLogo">
+            <div class="logo"></div>
+        </div>
+        <div class="cuadro">
+            <div class="fondoSobre">
+                <div class="icon-sobre"></div>
+            </div>
+            <h2 class="titulo2" style="color: #C12948;">{{"cambiarPass.titulo3" | translate}}</h2>
+            <p class="parrafo">
+                {{"cambiarPass.parrafo3" | translate}}
+            </p>
+            <p class="parrafo">
+                {{"cambiarPass.parrafo4" | translate}}
+            </p>
+            <div class="grupoBotones">
+                <button class="btn-enviar" routerLink='/recuperarPassword'>{{"cambiarPass.empezarOtraVez" | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fondo" *ngIf='this.alerta5'>
+    <div class="container">
+        <div class="fondoLogo">
+            <div class="logo"></div>
+        </div>
+        <div class="cuadro">
+            <div class="fondoSobre">
+                <div class="icon-sobre"></div>
+            </div>
+            <h2 class="titulo2" style="color: #C12948;">{{"cambiarPass.titulo4" | translate}}</h2>
+            <p class="parrafo">
+                {{"cambiarPass.parrafo5" | translate}}
+            </p>
+            <p class="parrafo">
+                {{"cambiarPass.parraf6" | translate}}
+            </p>
+            <div class="grupoBotones">
+                <button class="btn-enviar" routerLink='/recuperarPassword'>{{"cambiarPass.empezarOtraVez" | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fondo" *ngIf='this.alerta6'>
+    <div class="container">
+        <div class="fondoLogo">
+            <div class="logo"></div>
+        </div>
+        <div class="cuadro">
+            <div class="fondoSobre">
+                <div class="icon-sobre"></div>
+            </div>
+            <h2 class="titulo2" style="color: #C12948;">{{"cambiarPass.titulo5" | translate}}</h2>
+            <p class="parrafo">
+                {{"cambiarPass.parrafo7" | translate}}
+            </p>
+            <p class="parrafo">
+                {{"cambiarPass.parrafo6" | translate}}
+            </p>
+            <div class="grupoBotones">
+                <button class="btn-enviar" (click)="refresh()">{{"cambiarPass.empezarOtraVez" | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

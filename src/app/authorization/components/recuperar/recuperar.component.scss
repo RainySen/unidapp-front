@@ -1,0 +1,175 @@
+.logo {
+    padding-top: 18%;
+    height: 10rem;
+    width: 21rem;
+    background: url(../../../../assets/img/LogoPaco_Blanco.svg) no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Raleway', 'arial', sans-serif;
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: 5px auto;
+}
+
+.fondo {
+    background: rgb(164, 86, 243);
+    background: -moz-linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgb(164, 86, 243)), color-stop(18%, rgb(164, 86, 243)), color-stop(100%, rgb(121, 99, 246)));
+    background: -webkit-linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+    background: -o-linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+    background: -ms-linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+    background: linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+    padding-bottom: 10rem;
+    width: 100%;
+    height: 56rem;
+}
+
+.fondoLogo {
+    padding-top: 3rem;
+}
+
+.cuadro {
+    text-align: center;
+    padding-bottom: 5rem;
+    border-radius: 10px;
+    background: #fff;
+}
+
+h2 {
+    padding-top: 10%;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-24)/var(--unnamed-line-spacing-29) var(--unnamed-font-family-raleway);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-7d368a);
+    text-align: center;
+    font: normal normal bold 24px/29px Raleway;
+    letter-spacing: 0px;
+    color: #7D368A;
+    opacity: 1;
+}
+
+.parrafo {
+    padding-left: 17%;
+    padding-right: 17%;
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-16)/var(--unnamed-line-spacing-20) var(--unnamed-font-family-raleway);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-525f7f);
+    text-align: center;
+    font: normal normal normal 16px/20px Raleway;
+    letter-spacing: 0px;
+    color: #525F7F;
+    opacity: 1;
+}
+
+input {
+    width: 100%;
+    height: 35px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    padding-left: 1rem;
+}
+
+.correoValido {
+    width: 60%;
+}
+
+.correo {
+    width: 51%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.correo p {
+    background-color: #FB5A7B;
+    color: #fff;
+    border-radius: 4px;
+    padding-left: 1rem;
+    text-align: left;
+    width: 60%;
+    margin-top: 0.5rem;
+    height: 2rem;
+    padding-top: 0.1rem;
+}
+
+.grupoBotones {
+    padding-top: 3rem;
+}
+
+.btn-cancelar {
+    margin-right: 0.5rem;
+    background: #fff;
+    color: #3DB5FF;
+    top: 510px;
+    left: 328px;
+    width: 175px;
+    height: 51px;
+    border: 1px solid var(--unnamed-color-3db5ff);
+    border: 1px solid #3DB5FF;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+.btn-enviar {
+    margin-left: 0.5rem;
+    color: #fff;
+    top: 510px;
+    left: 522px;
+    width: 175px;
+    height: 51px;
+    background: var(--unnamed-color-3db5ff) 0% 0% no-repeat padding-box;
+    background: #3DB5FF 0% 0% no-repeat padding-box;
+    border: none;
+    border-radius: 6px;
+    opacity: 1;
+}
+
+.fondoSobre {
+    margin-top: 3rem;
+    padding-top: 3rem;
+}
+
+.icon {
+    &-alerta {
+        background: url(../../../../assets/img/2sprite.svg) no-repeat;
+        background-size: 188em;
+        background-position: 5.5% 25.9%;
+        position: absolute;
+        width: 6rem;
+        height: 5rem;
+    }
+    &-sobre {
+        padding-top: 9%;
+        height: 4rem;
+        width: 4rem;
+        background: url(../../../../assets/img/2sprite.png) no-repeat;
+        background-position: 5.5% 52.9%;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: 'Raleway', 'arial', sans-serif;
+    }
+}
+
+.titulo2 {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-24)/var(--unnamed-line-spacing-29) var(--unnamed-font-family-raleway);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-4bbc4f);
+    text-align: center;
+    font: normal normal bold 24px/29px Raleway;
+    letter-spacing: 0px;
+    color: #4BBC4F;
+    opacity: 1;
+    padding: 0;
+}
+
+.validacion {
+    background-color: #FB5A7B;
+    color: white;
+    width: 60%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0.5rem;
+    border-radius: 7px;
+}

@@ -1,0 +1,439 @@
+.container {
+    max-width: 1170px;
+    margin: auto;
+}
+
+// img {
+//     max-width: 100%;
+//     border-radius: 30px;
+// }
+
+.inbox_people {
+    background: white none repeat scroll 0 0;
+    float: left;
+    overflow: hidden;
+    width: 33%;
+    border-right: 0px solid #c4c4c4;
+}
+
+.componenteListVecinos {
+    padding: 0px;
+}
+
+.inbox_msg {
+    border: 0px solid #c4c4c4;
+    clear: both;
+    overflow: hidden;
+}
+
+.top_spac {
+    margin: 20px 0 0;
+}
+
+.recent_heading {
+    float: left;
+    width: 40%;
+    h4 {
+        color: #05728f;
+        font-size: 21px;
+        margin: auto;
+    }
+}
+
+// .selectMessaje::{
+// 	top: 395px;
+// 	left: 458px;
+// 	width: 100%;
+//     height: 100%;
+// 	background: #6868F4 0% 0% no-repeat padding-box;
+// 	opacity: 1;
+// }
+.fondo {
+    background: transparent linear-gradient(249deg, #6868f4 0%, #c840e9 100%) 0% 0% no-repeat padding-box;
+}
+.srch_bar {
+    display: inline-block;
+    width: 90%;
+    padding: 1%;
+    input {
+        width: 100%;
+        height: 45px;
+        background: #ffffff 0% 0% no-repeat padding-box;
+        border: 1px solid #dedede;
+        border-radius: 23px;
+        opacity: 1;
+        padding: 20px;
+    }
+    .input-group-addon {
+        button {
+            background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+            border: medium none;
+            padding: 0;
+            color: #707070;
+            font-size: 18px;
+        }
+        margin: 0 0 0 -27px;
+    }
+}
+
+.headind_srch {
+    padding: 10px 29px 10px 20px;
+    overflow: hidden;
+    border-bottom: 1px solid #c4c4c4;
+}
+
+.chat_ib {
+    h5 {
+        font-size: 15px;
+        color: #000000;
+        margin: 0 0 8px 0;
+        padding: 9px 10px 0px 0px;
+        font-size: 18px;
+        span {
+            font-size: 13px;
+            float: right;
+        }
+    }
+    p {
+        font-size: 14px;
+        color: #989898;
+        margin: auto;
+    }
+    float: left;
+    padding: 0 0 0 15px;
+    width: 88%;
+    padding-top: 5px;
+}
+
+.chat_img {
+    float: left;
+    width: 12%;
+    margin-top: 9px;
+}
+
+.chat_people {
+    background-color: transparent;
+}
+.chat_people:focus {
+    background-color: #007bff;
+}
+.boton_chat {
+    width: 100%;
+}
+.boton_chat:focus {
+    background-color: #6868f4;
+    border: 1px transparent;
+    border-radius: 0px;
+    h5 {
+        color: white;
+    }
+}
+
+.chat_list {
+    border-bottom: 1px solid #c4c4c4;
+    margin: 0;
+}
+.contentChatUser {
+    box-shadow: 0px 1px 0px #6868f459;
+    background-color: ghostwhite;
+    border-bottom: 1px solid #e4e2e2;
+    display: flex;
+}
+.contentChatUser:hover {
+    box-shadow: -3px 3px 4px #c840e990;
+}
+.contentChatUser {
+    transition: all 0.7s;
+}
+
+.chat__img {
+    max-width: 6rem;
+    margin: 1rem;
+}
+
+.chat__img img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.chat__info {
+    width: 100%;
+    text-align: left;
+    margin: 1rem;
+    letter-spacing: -0.29px;
+    color: #000d3d;
+    font-family: "Raleway";
+}
+
+.chat__user {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.chat__property {
+    font-weight: 500;
+}
+
+.inbox_chat {
+    height: 550px;
+    overflow-y: auto;
+}
+
+.active_chat {
+    background: white;
+}
+
+.incoming_msg {
+    margin-top: 8px;
+}
+
+.incoming_msg_img {
+    display: inline-block;
+    width: 9%;
+}
+.incoming_msg_img img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    object-fit: cover;
+    object-position: center center;
+}
+.imgDerecha {
+    width: 100%;
+}
+
+.received_msg {
+    display: inline-block;
+    padding: 0 0 0 10px;
+    vertical-align: top;
+    width: 90%;
+}
+
+.received_withd_msg {
+    p {
+        background: #6868f42e none repeat scroll 0 0;
+        border-radius: 1px 1px 15px 2px;
+        color: #646464;
+        font-size: 14px;
+        margin: 0;
+        padding: 8px;
+        width: 100%;
+        overflow: hidden;
+    }
+    width: 50%;
+}
+
+.received_withd_msg.high {
+    p {
+        background: #af08082e none repeat scroll 0 0;
+        font-weight: bold;
+    }
+}
+
+.received_withd_msg.medium {
+    p {
+        background: #8156102e none repeat scroll 0 0;
+    }
+}
+
+.received_withd_msg.low {
+    p {
+        background: #4c81102e none repeat scroll 0 0;
+    }
+}
+
+.contenidoMsg {
+    padding: 0px;
+}
+
+.time_date {
+    color: #747474;
+    display: block;
+    font-size: 12px;
+}
+.mensajeEnviado {
+    padding: 5px;
+}
+
+.mesgs {
+    float: left;
+    padding: 0px 0px 0px 0px;
+    width: 64%;
+}
+
+.sent_msg {
+    .message {
+        background: #6868f4 none repeat scroll 0 0;
+        border-radius: 34px 37px 10px 34px;
+        margin: 0;
+        width: 90%;
+        text-align: right;
+        padding: 0.3rem 1.2rem 0.4rem;
+    }
+    p {
+        font-size: 1rem;
+        color: #fff;
+        font-family: "Raleway";
+        margin: 0;
+    }
+    .nameUser {
+        font-size: 0.9rem;
+        color: #fff;
+        font-family: "Raleway";
+        font-weight: bold;
+    }
+    width: 46%;
+}
+.derecha {
+    float: right;
+}
+
+.outgoing_msg {
+    overflow: hidden;
+    margin: 26px 0 26px;
+}
+
+.input_msg_write {
+    input {
+        background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+        border: medium none;
+        color: #4c4c4c;
+        font-size: 15px;
+        min-height: 48px;
+        width: 100%;
+    }
+}
+
+.type_msg {
+    border-top: 1px solid #c4c4c4;
+    position: relative;
+}
+
+.messaging {
+    padding: 0 0 50px 0;
+}
+
+.msg_history {
+    height: 590px;
+    min-height: 590px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    border: 1px solid #e2dcdc;
+}
+
+.botonMas {
+    margin-top: 10px;
+    color: #fff;
+    background: #3db5ff;
+    border: none;
+}
+
+.botonMas:hover {
+    background: #3db5ff;
+}
+
+.inputTexto {
+    width: 90% !important;
+    height: 45px !important;
+    padding: 6px !important;
+    border-radius: 30px !important;
+    border: 1px solid #e2dcdc;
+}
+.inputTexto:focus {
+    border: 1px solid #6868f4;
+    outline: none;
+}
+
+.alineacion {
+    text-align: left;
+}
+
+.msg_history::-webkit-scrollbar {
+    //width: 8px;     /* Tamaño del scroll en vertical */
+    //height: 8px;    /* Tamaño del scroll en horizontal */
+    //display: none;  /* Ocultar scroll */
+    background-color: #6868f459;
+    border-radius: 7px;
+}
+.msg_history::-webkit-scrollbar-track-piece {
+    border-radius: 50%px;
+}
+.msg_history::-webkit-scrollbar-thumb {
+    background-color: #f468dd59;
+    border-radius: 7px;
+}
+
+.msg_send_btn {
+    background: deepskyblue;
+    border: medium none;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    height: 33px;
+    position: absolute;
+    right: 16px;
+    top: 7px;
+    width: 33px;
+}
+.msg_send_btn:hover {
+    background: #038a0f;
+    height: 45px;
+    width: 45px;
+    top: 0px;
+}
+.msg_send_btn {
+    transition: all 0.7s;
+}
+.etiqueta {
+    border-radius: 12px 12px 0px 0px !important;
+}
+
+.icon- {
+    &high {
+        background: url(../../../../assets/img/categories.svg) no-repeat;
+        background-size: 5em;
+        float: left;
+        background-position: 90.5% -12.7%;
+        height: 29px;
+        margin-right: -21%;
+        width: 60px;
+    }
+    &medium {
+        background: url(../../../../assets/img/categories.svg) no-repeat;
+        background-size: 5em;
+        float: left;
+        background-position: 90.5% 47.3%;
+        height: 29px;
+        margin-right: -21%;
+        width: 60px;
+    }
+    &low {
+        background: url(../../../../assets/img/categories.svg) no-repeat;
+        background-size: 5em;
+        float: left;
+        background-position: 90.5% 104.3%;
+        height: 29px;
+        margin-right: -21%;
+        width: 60px;
+    }
+}
+//RESPONSEVE
+
+@media screen and (max-width: 1020px) {
+    .inbox_people {
+        background-color: #000000;
+        display: contents !important;
+        height: auto !important;
+    }
+    .mesgs {
+        display: contents !important;
+    }
+    .inbox_chat {
+        height: auto;
+    }
+}

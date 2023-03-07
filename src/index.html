@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>PACO</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1976d2">
+    <link rel="shortcut icon" type="image/jpg" href="assets/img/LogoPaco_Color.ico">
+
+
+    <style type="text/css">
+        * {
+            font-family: 'Raleway', 'arial', sans-serif;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        .app-loading {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .app-loading .spinner {
+            height: 200px;
+            width: 200px;
+            animation: rotate 2s linear infinite;
+            transform-origin: center center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .app-loading .spinner .path {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            animation: dash 1.5s ease-in-out infinite;
+            stroke-linecap: round;
+            stroke: #ddd;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35px;
+            }
+
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124px;
+            }
+        }
+
+        .fondo {
+            background: rgb(164, 86, 243);
+            background: -moz-linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+            background: -webkit-gradient(left bottom, right top, color-stop(0%, rgb(164, 86, 243)), color-stop(18%, rgb(164, 86, 243)), color-stop(100%, rgb(121, 99, 246)));
+            background: -webkit-linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+            background: -o-linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+            background: -ms-linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+            background: linear-gradient(45deg, rgb(164, 86, 243) 0%, rgb(164, 86, 243) 18%, rgb(121, 99, 246) 100%);
+        }
+
+        .swal2-styled.swal2-confirm {
+            background: #3DB5FF !important;
+            color: #fff !important;
+        }
+
+        .swal2-styled.swal2-cancel {
+            background: none !important;
+            border: 1px solid #3DB5FF !important;
+            color: #3DB5FF !important;
+        }
+
+        .swal2-content .alert__container {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alert__container .alert__header.header__success {
+            background: url(../../../../assets/img/alertsSprite.svg) no-repeat;
+            background-position: 24% 9%;
+            background-size: 118rem;
+            height: 7rem;
+            width: 9rem;
+            margin-bottom: 1rem;
+        }
+
+        .alert__container .alert__header.header__error {
+            background: url(../../../../assets/img/alertsSprite.svg) no-repeat;
+            background-position: 36% 9%;
+            background-size: 118rem;
+            height: 7rem;
+            width: 9rem;
+            margin-bottom: 1rem;
+        }
+
+        .alert__container .alert__header img {
+            width: 150px;
+            height: 150px;
+            background-size: cover;
+        }
+
+        .alert__container .alert__content .alert__title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .title__success {
+            color: #000D3D;
+        }
+
+        .title__error {
+            color: #C12948;
+        }
+
+        .alert__container .alert__content .alert__description {
+            font-size: 1rem;
+            font-weight: normal;
+            text-align: center;
+            color: #525F7F;
+        }
+    </style>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta name="theme-color" content="#1976d2">
+</head>
+
+<body class="fondo">
+    <app-root>
+        <div class="app-loading">
+            <div class="logo"></div>
+            <svg class="spinner" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </app-root>
+    <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+
+</html>

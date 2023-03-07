@@ -1,0 +1,105 @@
+<div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <form [formGroup]="editarVecino" class="form centrarDiv">
+        <div class="row">
+            <div class="col">
+                <h2 class="tituloUsuario">{{"vecinos.vecinos" | translate}}</h2>
+                <p class="subtituloP">{{"vecinos.ingresaDatosUsuarios" | translate}}</p>
+                <div class="input-group">
+                    <label class="input-group-btn">
+                        <span class="btn btn-file">
+                            <img class="imagen" alt="" [src]="this.editarVecino.get('foto').value" height="200px" width="200px">
+                            <input hidden accept=".jpg,.png,.jpeg,.gif" class="hidden" name="banner" type="file" (change)='onFileSelect($event)' #fileInput>
+                        </span>
+                    </label>
+                </div>
+                <p class="colorLetra" style="margin-top: 15px;">{{"vecinos.agregaFotoUsuario" | translate}}</p>
+                <br>
+            </div>
+        </div>
+
+        <div class="row" *ngIf='this.cargando'>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <img type="image" src="../../../../assets/img/authorization/load_house.gif" style="height: 80%;" />
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf='!this.cargando'>
+            <div class="col">
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="nombres" class="alinearIzquierda colorLetra">{{"vecinos.escribeSuNombre" | translate}}</label>
+                    <input type="text" formControlName='nombres' name="nombres" id="nombres" class="form-control">
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="apellidos" class="alinearIzquierda colorLetra">{{"vecinos.escribeSusApellidos" | translate}}</label>
+                    <input type="text" formControlName='apellidos' name="apellidos" id="apellidos" class="form-control">
+                </div>
+
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="fecha_nacimiento" class="alinearIzquierda colorLetra">{{"vecinos.escibeFechaNacimiento" | translate}}</label>
+                    <input type="date" formControlName='fecha_nacimiento' name="fecha_nacimientos" id="fecha_nacimientos" class="form-control">
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="tipo_doc" class="alinearIzquierda colorLetra">{{"vecinos.eligeTipoDocumento" | translate}}</label>
+                    <select type="text" formControlName='tipo_doc' name="tipo_doc" id="tipo_doc" class="form-control">
+                        <option value="cc">{{"vecinos.cedulaCiudadania" | translate}}</option>
+                        <option value="pas">{{"vecinos.pasaporte" | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="identificacion" class="alinearIzquierda colorLetra">{{"vecinos.numeroIdentificacion" | translate}}</label>
+                    <input type="number" formControlName='identificacion' name="identificacion" id="identificacion" class="form-control">
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="sexo" class="alinearIzquierda colorLetra">{{"vecinos.eligeGenero" | translate}}</label>
+                    <select (change)='this.generoOtroMetodo()' type="text" formControlName='sexo' name="sexo" id="sexo" class="form-control">
+                        <option value="H">{{"vecinos.hombre" | translate}}</option>
+                        <option value="M">{{"vecinos.mujer" | translate}}</option>
+                    </select>
+                </div>
+
+                <div *ngIf='this.generoOtro' class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="sexo" class="alinearIzquierda colorLetra">{{"vecinos.cual" | translate}}</label>
+                    <input type="text" formControlName='sexo' name="sexo" id="sexo" class="form-control">
+                </div>
+
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="numero_celular" class="alinearIzquierda colorLetra">{{"vecinos.numeroTelefonico" | translate}}</label>
+                    <input type="text" name="numero_celular" formControlName='numero_celular' id="numero_celular" class="form-control">
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="correoElectronico" class="alinearIzquierda colorLetra">{{"vecinos.cualCorreoElectronico" | translate}}</label>
+                    <input type="email" formControlName='email' name="correoElectronico" id="correoElectronico" class="form-control">
+                </div>
+
+
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-5 centrarDiv">
+                    <label for="estadoVecino" class="alinearIzquierda colorLetra">{{"vecinos.eligeEstado" | translate}}</label>
+                    <select type="text" formControlName='estado' name="estadoVecino" id="estadoVecino" class="form-control">
+                        <option value="A">{{"vecinos.activo" | translate}}</option>
+                        <option value="C">{{"vecinos.creado" | translate}}</option>
+                        <option value="I">{{"vecinos.aprobado" | translate}}</option>
+                        <option value="R">{{"vecinos.retirado" | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 centrarDiv">
+                    <button type="submit" class="btn btn-primary btnReturnStep" (click)='this.onPropagar()'>{{"global.regresar" | translate}}</button>
+                    <button type="submit" class="btn btn-primary btnSaveUpdate" *ngIf='this.editarVecino.valid' (click)='this.uploadFile()'>{{"vecinos.guardaDatos" | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

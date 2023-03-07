@@ -1,0 +1,97 @@
+<div class="container" *ngIf='!this.editar'>
+    <h1 class="alinear-izquierda"
+        style="color: #7D368A; font-weight: bold; font-size: 20px; margin-bottom: -5px; margin-bottom: 10px;">
+        {{"cartelera.cartelera" | translate}}</h1>
+    <h3 class="alinear-izquierda">{{"cartelera.eventosParaNoSalir" | translate}}</h3>
+
+
+
+    <div class="importante" *ngIf="this.billboards.length != 0 && this.mostimportant.images">
+        <div class="importante">
+            <div class="imagen-importante">
+                <img *ngIf="this.mostimportant.images.length > 0" class="card-img-top"
+                    [src]="this.mostimportant.images[0].image" alt="Imagencartelera">
+                <img *ngIf="this.mostimportant.images == 0" src="../../../../assets/img/no_image.jpg"
+                    class="card-img-top" style="height: -webkit-fill-available;">
+                <!-- <div *ngIf='this.permisos.modificacion == "S"' class="important__btn__edit" (click)='this.accionesCartelera(mostimportant)'></div>
+                <div *ngIf='this.permisos.eliminacion == "S"' class="important__btn__remove" (click)='this.eliminarCartelera(mostimportant)'></div> -->
+            </div>
+            <div class="contenido">
+                <p class="title__important">
+                    {{this.mostimportant.title  | truncate : limitTitle}}
+                </p>
+                <p class="desc__important"
+                    [innerHTML]='this.mostimportant.description | truncate : limitDesc'></p>
+            </div>
+          
+            <div class=" interlineado fecha">
+                <div *ngIf='this.permisos.modificacion == "S"' class="important__btn__edit" (click)='this.accionesCartelera(mostimportant)'></div>
+                <div *ngIf='this.permisos.eliminacion == "S"' class="important__btn__remove" (click)='this.eliminarCartelera(mostimportant)'></div>
+           
+                <p class="">{{this.mostimportant.start_date | date:"dd"}}</p>
+                <p class="mes">{{this.mostimportant.start_date | date:"MMM" | translate}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf='this.permisos.creacion == "S"' class="contenido-importante">
+        <button class="btn btn-outline-primary borrar"
+            (click)='this.accionesCartelera("")'>{{"cartelera.nuevaPublicacion" | translate}}</button>
+    </div>
+    <div *ngIf="this.billboards.length != 0">
+    </div>
+
+    <div class="row" *ngIf='this.cargando'>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <img type="image" src="../../../../assets/img/authorization/load_house.gif" style="height: 60%;" />
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: left;color: #525F7F;font-size: 20px; padding-top: 2%; padding-bottom: 1%;">Estos serán los
+        eventos importantes del mes:</div>
+    <div class="card-columns espacio" *ngIf="this.billboards.length != 0">
+        <div class="card animated fadeIn fast animacion cetrarCarta" *ngFor="let cartelera of billboards">
+            <div>
+                <div class="limiteImagen">
+                    <img *ngIf="cartelera.images.length > 0" [src]="cartelera.images[0].image" class="card-img-top"
+                        style="height: -webkit-fill-available;" [alt]="cartelera.title">
+                    <img *ngIf="cartelera.images.length == 0" src="../../../../assets/img/no_image.jpg"
+                        class="card-img-top" style="height: -webkit-fill-available;" [alt]="cartelera.title">
+                    <div *ngIf='this.permisos.modificacion == "S"' class="botonEditar"
+                        (click)='this.accionesCartelera(cartelera)'></div>
+                    <div *ngIf='this.permisos.eliminacion == "S"' class="botonBorrar"
+                        (click)='this.eliminarCartelera(cartelera)'></div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"
+                        style="color: #000d3d; text-align: left; font-weight: bold; font-size: 18px;">
+                        {{cartelera.title | truncate : limitTitle}}</h5>
+                    <p class="card-text overflow-ellipsis"
+                        style="color: #3DB5FF; text-align: left; padding-left: 0; font-size: 16px;">
+                        {{cartelera.start_date}}</p>
+                    <p class="card-text card-description"
+                        style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;text-align: justify;"
+                        [innerHTML]='cartelera.description | truncate : limitDesc'></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="this.billboards.length == 0">
+        <div class="contendorVacia">
+            <div class="imagenVacia">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf='this.editar'>
+    <app-create-billboard [billboard]='this.billboard' (propagar)="procesaPropagar()"></app-create-billboard>
+</div>

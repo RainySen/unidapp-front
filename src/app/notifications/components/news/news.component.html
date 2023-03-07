@@ -1,0 +1,62 @@
+<div class="container">  
+
+    <div class="row">
+        <div class="col-11 offset-1 p-0 padding">
+            <section class="cabeza">
+                <h2>{{"cartelera.noticias" | translate}}</h2>
+                <p class="cabezaNoticia">{{"cartelera.estoEsImportante" | translate}}</p>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div *ngIf="!this.editar">
+            <div *ngIf='this.permisos.creacion == "S"' class="contenido-importante">
+                <button class="btn btn-primary borrar" (click)='this.accionesNoticias(""); this.show = false;'>{{"cartelera.crearNoticia" | translate}}</button>
+            </div>
+            <hr>
+         </div>
+        </div>
+
+
+        <div *ngIf='this.editar'>
+            <app-create-news [objEstablecimiento]='this.objEstablecimiento' [new]='this.news' (propagar)="this.procesaPropagar()"></app-create-news>
+        </div>
+
+
+
+
+       
+
+  
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" id="list_news" *ngIf="!this.editar">
+        <div class="col" *ngFor="let noticia of this.noticias; let i = index">
+          <div class="card" [ngClass]="{'azul': (i%2)==0}" style="height: 250px;">
+            <div class="card-body">
+                <div class="fecha">
+                    <p class="card-text-fecha"><strong>{{noticia.start_date | date:'dd'}}</strong><br>{{noticia.start_date | date:'MMM' | translate}}</p>
+                </div>
+                <p class="card-title puntosSuspensivosTitulo"><strong>{{noticia.title}}</strong></p>
+                <div class="card-subtitle">
+                    <p><small>{{"chatNoti.publicadoPor" | translate}} {{noticia.author}}</small></p>
+                </div>
+                <p class="card-text puntosSuspensivos" [innerHTML] = 'this.noticia.description'></p>
+                <div class="botones">
+                    <p class="boton1" *ngIf='this.permisos.modificacion == "S"' (click)='this.accionesNoticias(noticia)'></p>
+                    <p class="boton2" *ngIf='this.permisos.eliminacion == "S"'(click)='this.eliminarNoticia(noticia)'></p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</div>
+
+<div *ngIf="this.show == true">
+    <div class="contendorVacia">
+        <div class="imagenVacia">
+        </div>
+    </div>
+</div>

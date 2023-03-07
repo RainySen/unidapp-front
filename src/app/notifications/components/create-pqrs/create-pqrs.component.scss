@@ -1,0 +1,93 @@
+.progress {
+  border-radius: 30px;
+}
+.progress-bar {
+  background-color: #7D368A;;
+}
+.barra {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+}
+
+.Titulo{
+  color: #7D368A;
+  font-size: 24px;
+}
+
+.subtitulo
+{
+  font-size: 20px;
+   width: 80%;
+   margin-top: -1%
+}
+
+.letrasBarra {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-12 {
+  margin-left: 3rem;
+  margin-top: -7%;
+}
+
+span.red {
+  background: #7D368A;
+  border-radius: 0.8em;
+  -moz-border-radius: 0.8em;
+  -webkit-border-radius: 0.8em;
+  color: #7D368A;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 20px;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+}
+
+.seccion4-1{
+  width: 95%;
+  margin-left: 37px;
+  height: 100%;
+}
+
+
+
+.inputEdit {
+  border: 1px solid #9DA5B5;
+  border-radius: 8px;
+  opacity: 1;
+  width: 478px;
+  height: 50px;
+  padding-left: 12px;
+  font: Regular 14px/16px Raleway;
+}
+
+.btnReturnStep {
+  background: none;
+  border-radius: 8px;
+  opacity: 1;
+  border-color: #3DB5FF;
+  color: #3DB5FF;
+  width: 145px;
+  height: 50px;
+  margin-right: 10px;
+  font: Regular 14px/16px Raleway;
+}
+
+.btnSaveUpdate {
+  background: #3DB5FF 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  opacity: 1;
+  border: none;
+  color: #ffffff;
+  width: 145px;
+  height: 50px;
+  font: Regular 14px/16px Raleway;
+}
+
+.seccion8 button:hover {
+  background: #038be0 0% 0% no-repeat padding-box;
+}

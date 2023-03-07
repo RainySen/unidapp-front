@@ -1,0 +1,871 @@
+* {
+    font-family: "Raleway", "arial", sans-serif;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+.divSuperior {
+    border-radius: 0px 0px 30px 30px;
+}
+
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.fondo {
+    background: transparent linear-gradient(253deg, #6868f4 0%, #c840e9 100%) 0% 0% no-repeat padding-box;
+    opacity: 1;
+    height: 300px;
+}
+
+.barTop {
+    background-color: transparent;
+    height: 27%;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #ffffff;
+}
+
+.textBarTop {
+    color: rgb(255, 213, 255);
+    padding-top: 2%;
+}
+
+.textBoxSearch {
+    padding-top: 15px;
+    border-radius: 20%;
+}
+
+.inicioBox {
+    padding-top: 25px;
+    color: white;
+}
+
+.inputTextBoxSearch {
+    border-radius: 20px;
+    width: 140px;
+}
+
+.iconStyleBarTop {
+    max-width: 3% !important;
+    margin-top: 20px;
+    color: white;
+}
+
+.media-pill {
+    position: relative;
+    padding: 2px 1rem 2px 2px;
+    background-color: rgba(31, 45, 61, 0.15);
+    border-radius: 50rem;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    width: 280px;
+}
+
+.avatar {
+    background-color: transparent;
+    position: relative;
+    color: #fff;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 40px;
+    width: 3.125rem;
+}
+
+.avatarText {
+    width: max-content;
+    color: white;
+    font: 24px/29px Raleway;
+    font-size: 18px;
+}
+
+.navColText {
+    margin-top: 57px;
+}
+
+.navText {
+    font: Bold 24px/29px Raleway;
+    color: #fdfeff;
+    opacity: 1;
+    font-size: 18px;
+}
+.nav-enlace {
+    width: 100%;
+    margin: 0px;
+}
+
+.active-link {
+    background: transparent linear-gradient(249deg, #000d3d 100%, #6868f4 0%) 0% 0% no-repeat padding-box !important;
+    color: white !important;
+    cursor: pointer !important;
+
+    .icon-casitaOscura {
+        background-position: 5.56% 24.5%;
+    }
+    .icon-edificio {
+        background-position: 5.56% 30.3%;
+    }
+    .icon-administrar {
+        background-position: 5.8% 36%;
+    }
+    .icon-administrar2 {
+        background-position: 5.8% 41.5%;
+    }
+    .icon-cartelera {
+        background-position: 5.56% 52.7%;
+    }
+    .icon-noticias {
+        background-position: 5.56% 58.5%;
+    }
+    .icon-novedades {
+        background-position: 5.56% 70%;
+    }
+    .icon-documentos {
+        background-position: 5.56% 64.3%;
+    }
+    .icon-pqrs {
+        background-position: 5.56% 75.1%;
+    }
+}
+
+.menuIzq label {
+    color: black;
+}
+
+.menuIzq label:hover {
+    color: white;
+}
+
+.menuSel {
+    width: 100%;
+    height: 45px;
+    background: white 0% 0% no-repeat padding-box;
+    opacity: 1;
+    font: 15px/38px Raleway;
+    letter-spacing: 0px;
+    color: #000d3d;
+    opacity: 1;
+    text-align: left;
+}
+
+.menuSel:hover {
+    background: transparent linear-gradient(249deg, #6868f4 0%, #3db5ff 100%) 0% 0% no-repeat padding-box;
+    color: white;
+    cursor: pointer;
+}
+.btn:focus {
+    box-shadow: none;
+}
+
+.subMenuSel {
+    width: 100%;
+    height: 45px;
+    background: white 0% 0% no-repeat padding-box;
+    opacity: 1;
+    font: 15px/38px Raleway;
+    letter-spacing: 0px;
+    color: #000d3d;
+    opacity: 1;
+    text-align: left;
+}
+
+.subMenuSel:hover {
+    background: rgb(61, 181, 255);
+    color: white;
+    cursor: pointer;
+}
+
+.subMenuSel:focus {
+    background: rgb(61, 181, 255);
+    color: white;
+    cursor: pointer;
+}
+
+.opcionText {
+    text-align: left;
+    font: 15px/38px Raleway;
+    letter-spacing: 0px;
+    color: #000d3d;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.opcionText:hover {
+    color: white;
+}
+
+.extremoIzq {
+    padding: 0;
+}
+
+.extremoIzq:hover {
+    color: white;
+}
+
+.lista {
+    list-style: none;
+    &-izquierda {
+        margin-left: -3rem;
+        list-style: none;
+    }
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+.icon {
+    &-check {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 188em;
+        padding: 25px;
+        float: left;
+        margin-top: -45px;
+        background-position: 5.5% 7.5%;
+        margin-left: 329px;
+        margin-right: 10px;
+        position: absolute;
+    }
+    &-lupa {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 145em;
+        padding: 25px;
+        float: left;
+        margin-top: 2px;
+        background-position: 13.65% 6.7%;
+        margin-left: 2px;
+        margin-right: 2px;
+        margin-bottom: 2px;
+        position: absolute;
+    }
+    &-calendario {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 112em;
+        padding: 25px;
+        float: left;
+        margin-top: 1px;
+        background-position: 16.4% 5.9%;
+        margin-left: 1px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+        position: absolute;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+    }
+    &-cerrarsesion {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 97em;
+        padding: 25px;
+        float: left;
+        margin-top: 1px;
+        background-position: 28% 5.3%;
+        margin-left: 1px;
+        margin-right: 1px;
+        margin-bottom: 1px;
+        position: absolute;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+    }
+    &-ayuda {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 112em;
+        padding: 25px;
+        float: left;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        background-position: 19.4% 5.9%;
+        margin-left: 2px;
+        margin-right: 2px;
+        position: absolute;
+        cursor: pointer;
+    }
+    &-configuracion {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 153em;
+        padding: 25px;
+        float: left;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        background-position: 10% 67.3%;
+        margin-left: 0px;
+        margin-right: 0px;
+        position: absolute;
+        cursor: pointer;
+    }
+    &-notificaciones {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 112em;
+        float: left;
+        background-position: 28.1% 5%;
+        position: absolute;
+        cursor: pointer;
+    }
+    &-casita {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 172em;
+        padding: 25px;
+        float: left;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        background-position: 5.45% 24.1%;
+        margin-left: 2px;
+        margin-right: 2px;
+        position: absolute;
+        cursor: pointer;
+    }
+    &-casitaOscura {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 223em;
+        float: left;
+        background-position: 3.4% 24.5%;
+        height: 33px;
+        width: 50px;
+    }
+    &-edificio {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.3% 30.3%;
+        height: 38px;
+        width: 50px;
+    }
+    &-flecha {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: right;
+        background-position: 3.3% 30.3%;
+        height: 38px;
+        width: 50px;
+    }
+    &-administrar {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.5% 36%;
+        height: 33px;
+        width: 50px;
+    }
+    &-administrar2 {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.5% 41.5%;
+        height: 33px;
+        width: 50px;
+    }
+    &-casa {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.4% 24.5%;
+        height: 41px;
+        width: 38px;
+        margin-right: 1rem;
+    }
+    &-cartelera {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.5% 52.7%;
+        height: 33px;
+        width: 50px;
+    }
+    &-noticias {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.4% 58.5%;
+        height: 33px;
+        width: 50px;
+    }
+    &-novedades {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.4% 70%;
+        height: 33px;
+        width: 50px;
+    }
+    &-documentos {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.5% 64.3%;
+        height: 35px;
+        width: 50px;
+    }
+    &-pqrs {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 211em;
+        float: left;
+        background-position: 3.5% 75.1%;
+        height: 33px;
+        width: 50px;
+    }
+    &-change {
+        background: url(../../../../assets/img/sprite.svg) no-repeat;
+        background-size: 175em;
+        padding: 25px;
+        float: left;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        background-position: 10% 71%;
+        margin-left: 2px;
+        margin-right: 2px;
+        position: absolute;
+        cursor: pointer;
+    }
+}
+
+.imgUser {
+    position: absolute;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+    .ocultar {
+        display: none;
+    }
+}
+
+.ocultar {
+    display: none;
+    transition-delay: 1s;
+}
+
+.lista-ocultar {
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in;
+}
+
+.navarFondo {
+    opacity: 1;
+    position: static;
+    padding: 0px;
+    margin: 0px;
+}
+
+.navarFondo2 {
+    background: #ffffff;
+    opacity: 1;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+.avatarText2 {
+    width: 100%;
+    font: 24px/29px Raleway;
+    font-size: 18px;
+}
+
+.margenBotonesMenu {
+    margin-left: 50px;
+}
+
+.textoBotones {
+    color: transparent !important;
+}
+
+.extremosContainer {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+}
+
+.fondoEntero {
+    background: transparent linear-gradient(249deg, #6868f4 0%, #c840e9 100%) 0% 0% no-repeat padding-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+.textoFoto {
+    text-align: center;
+    font: Bold 24px/29px Raleway;
+    letter-spacing: 0px;
+    color: #1f2038;
+    opacity: 1;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+.centrarFotoTexto {
+    align-items: center;
+}
+
+.componenteListVecinos {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 15px 0px 15px 0px;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.lienzo {
+    background: #f8f9fe;
+}
+
+.imagenUsuario {
+    padding: 0px;
+    margin: 0px;
+}
+
+.imagenUsuario2 {
+    padding: 15px;
+}
+
+.fondoSuperior {
+    background: transparent linear-gradient(249deg, #6868f4 0%, #c840e9 100%) 0% 0% no-repeat padding-box;
+    padding-bottom: 77px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.fondoSuperiorIzquierdo {
+    background: white;
+    padding: 0px;
+}
+
+.navSubText {
+    font: 24px/29px Raleway;
+    color: #fdfeff;
+    opacity: 1;
+    font-size: 18px;
+    margin-top: 20px;
+    // margin-right: 40px;
+}
+
+.inputImagenUnidad {
+    background: #3d3d71 0% 0% no-repeat padding-box;
+    border-radius: 31px;
+    opacity: 0.6;
+    width: 300px;
+}
+
+.textoInputUnidad {
+    text-align: center;
+    font: Regular 24px/29px Raleway;
+    letter-spacing: 0px;
+    color: #fdfeff;
+    border: none;
+}
+
+.calendario {
+    width: auto;
+    height: 50px;
+}
+
+.cambiarEstablecimiento {
+    width: 3rem;
+}
+
+.calendarioDerecha {
+    margin-left: 50px;
+}
+
+.calendarioIzquierda {
+    margin-right: 50px;
+}
+
+.imagenUnidad {
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    opacity: 1;
+    position: relative;
+}
+
+.nombreUnidad {
+    padding-top: 11px;
+    padding-left: 2rem;
+    border-left: none;
+    height: 50px;
+    border-radius: 0px 15px 15px 0px;
+    margin-left: -3.11rem;
+    width: 280px;
+    text-align: center;
+    background: rgb(102, 85, 200);
+    border-radius: 31px;
+    color: white;
+    font: Bold 16px/10px Raleway;
+}
+
+.textoDivertido1 {
+    font: Bold 24px/29px Raleway;
+    color: #fdfeff;
+    opacity: 1;
+    font-size: 18px;
+    margin: 0px;
+}
+
+.textoDivertido2 {
+    text-align: left;
+    font: Regular 24px/29px Raleway;
+    letter-spacing: 0px;
+    color: #fdfeff;
+    opacity: 1;
+    margin-bottom: 50px;
+}
+
+.botonBuscar {
+    margin-left: 6%;
+}
+
+.inputBuscar {
+    border-radius: 50px;
+    width: 228px;
+    height: 50px;
+    padding-left: 50px;
+    box-shadow: 0px 3px 6px #1f203880;
+}
+
+.fondoGris {
+    height: 37.8rem;
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: 5px auto;
+}
+
+.modal-content {
+    width: 190%;
+    margin-left: -140px;
+    margin-top: 38%;
+    border-radius: 25px;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.close {
+    background-color: rgb(61, 181, 255);
+    margin-left: 96%;
+    margin-top: 0%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 5;
+}
+
+.spanClose {
+    position: absolute;
+    margin-top: -2.7%;
+    margin-left: -1.1%;
+    font-size: 44px;
+    font-weight: 100;
+    color: white;
+    opacity: 5;
+}
+
+.TextHeaderChangeStableshment {
+    color: rgb(125, 54, 138);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.TextDescriptionChangeStableshment {
+    color: #1f2038;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.TextTittleChangeStableshment {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    color: #1f2038;
+}
+
+.inputChangeStableshment {
+    width: 40%;
+    margin-left: 28%;
+    background-color: rgb(248, 249, 254);
+}
+
+.btnChangeStableshment {
+    height: 48px;
+    background: #3db5ff 0% 0% no-repeat padding-box;
+    border-radius: 15px;
+    border: none;
+    margin-left: 35%;
+    color: white;
+    align-items: center;
+    width: 20%;
+}
+
+.btnChangeStableshment:hover {
+    background: #87d1ff 0% 0% no-repeat padding-box;
+}
+
+@media (max-width: 996px) {
+    .fondoGris {
+        height: auto;
+    }
+    .ocultarBienvenido {
+        display: none;
+        color: transparent;
+    }
+}
+
+@media (max-width: 991px) {
+    .calendario {
+        margin-left: 0px;
+    }
+    .nombreUnidad {
+        padding-top: 1.2%;
+    }
+    .botonBuscar {
+        margin-left: 2%;
+    }
+}
+
+@media (max-width: 994px) {
+    .navarFondo {
+        opacity: 1;
+        position: static;
+    }
+    .navarFondo2 {
+        opacity: 1;
+        display: grid;
+        max-width: 100%;
+    }
+}
+.lista-izquierda {
+    margin: 0px;
+    padding: 0px;
+}
+.menuOrden {
+    padding: 0px;
+}
+
+.tittleInicio {
+    font-family: 'Raleway';
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #1f2038;
+    opacity: 1;
+    padding: 5px;
+    margin: 5px;
+    text-align: initial;
+}
+
+.subtittleInicio {
+    font-size: 26px;
+    font-family: 'Raleway';
+    line-height: 1.2;
+    letter-spacing: 0px;
+    color: #1f2038;
+    opacity: 1;
+    padding: 5px;
+    margin: 5px;
+    text-align: initial;
+}
+
+.tittleCardSmall {
+    font-size: 24px;
+    font-family: 'Raleway';
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #1f2038;
+    opacity: 1;
+    padding: 0px;
+    margin-left: 10px;
+    margin-bottom: 8px;
+    text-align: initial;
+}
+
+.textCardSamll {
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'Raleway';
+    letter-spacing: 0px;
+    color: #1f2038;
+    opacity: 1;
+    padding: 0px;
+    margin-left: 10px;
+    text-align: initial;
+}
+
+.textDeLado {
+    word-wrap: break-word;
+    width: 1em;
+    letter-spacing: 50px;
+    color: #f3ede6;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.sizeRowCenter {
+    margin-bottom: 10%;
+    margin-top: 8%;
+}
+
+.my-actions { margin: 0 2em; }
+.order-1 { order: 1; }
+.order-2 { order: 2; }
+.order-3 { order: 3; }
+
+.right-gap {
+  margin-right: auto;
+}

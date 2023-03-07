@@ -1,0 +1,411 @@
+<div class="lienzo">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-md-12 col-xl-2 col-lg-2 fondoSuperiorIzquierdo">
+
+
+            <div class="text-center">
+                <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12">
+                    <img src="../../../../assets/img/LogoPaco_Color.png" style="width: 100%;">
+                    <div class="col-sx-12 col-md-12 col-xl-12 col-lg-12 ">
+                        <img [src]='this.establecimiento.ruta_imagen_establ' alt="" class="rounded-circle mt-4"
+                            style="width: 100px; height: 100px;">
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" style="padding-top: 1rem;">
+                        <p class="textoFoto">{{ this.establecimiento.nom_establec }}</p>
+                        <p class="textoFoto2">{{this.establecimiento.tipo_establec}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-md-12 col-xl-10 col-lg-10 fondoSuperior">
+            <nav class="navbar navbar-expand-lg navbar-light">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: center;">
+                    <div style="width: 20%;text-align: left; padding-right: 0px;">
+                        <p class="navSubText">{{this.nombreMenu}}</p>
+                    </div>
+
+                    <div class="botonBuscar col-3">
+                        <i class="icon-lupa " hidden></i>
+                        <input hidden class="form-control inputBuscar" type="search" aria-label="Search"
+                            placeholder='{{"establecimiento.buscar" | translate}}'>
+                    </div>
+
+                    <div class="calendario calendarioDerecha" hidden>
+                        <i class="icon-calendario"></i>
+                        <a class="nav-link"> <span class="sr-only">(current)</span></a>
+                    </div>
+
+                    <div class="calendario" hidden>
+                        <i class="icon-ayuda"></i>
+                        <a class="nav-link margenBotonesMenu textoBotones"> <span class="sr-only">(current)</span></a>
+                    </div>
+
+                    <div class="calendario cambiarEstablecimiento">
+                        <i class="icon-configuracion" (click)='this.accion("Perfil",0)'></i>
+                        <a class="nav-link margenBotonesMenu textoBotones"><span class="sr-only">(current)</span></a>
+                    </div>
+                    <div  class="calendario cambiarEstablecimiento"
+                        >
+                        <i class="icon-change"></i>
+                        <a class="nav-link margenBotonesMenu textoBotones"> <span class="sr-only">(current)</span></a>
+                    </div>
+
+                    <div class="calendario calendarioIzquierda" data-toggle="modal">
+                        <a class="icon-cerrarsesion nav-link margenBotonesMenu textoBotones" style="margin-left: 0.2%;"
+                            (click)='this.cerrarSesion()'><span class="sr-only">(current)</span></a>
+                    </div>
+
+                    <div class="inline-block align-items-center" style="display: flex;">
+
+
+                        <div class="imagenUnidad" style="float: inline-start;">
+                            <img alt="" class="rounded-circle imgUser" style="width: 46px;">
+                          </div>
+
+
+                        <div class="nombreUnidad text-align: left; padding-left: 20%;">
+                            <label style="margin-left: -48%;">{{this.getUser}}</label>
+                            <br>
+                            <label style="font-weight: normal; font-size: 14px; margin-left: -40%;">{{this.getEstablecimientos}}</label>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <hr style="background: white; width: 100%; display: inline-block;">
+            <div class="col-xs-10 col-md-10 col-xl-10 col-lg-10 offset-1 ocultarBienvenido imagenUsuario2"
+                style="margin-left: 7%;">
+                <p class="textoDivertido1">{{"establecimiento.bienvenido" | translate}} {{
+                    this.establecimiento.nom_establec }}</p>
+                <p class="textoDivertido2">{{"establecimiento.fraseDiviertete" | translate}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-12 col-xl-2 col-lg-2 fondoGris menuOrden">
+            <ul class="lista-izquierda">
+                <li class="nav-enlace">
+
+                    <button id="buttonInicio" (click)='accion("inicio", 0)' type="button"
+                        class="btn btn-primary-outlined menuSel" #inicioBtn>
+                        <div class="icon-casitaOscura" style="margin-right: 4%;"></div>{{"establecimiento.inicio" |
+                        translate}}
+                    </button>
+
+                    <div *ngFor="let opciones of this.opciones; index as i"
+                        class="xs-12 col-md-12 ml-12 xl-12 extremoIzq">
+                        <div class="estiloHoverMenuSelect" *ngIf='opciones.nom_opcion == "Administrar"'>
+
+                            <button id="buttonAdmin" type="button" class="btn btn-primary-outlined menuSel" #edificioBtn
+                                (click)="esconderMenu()">
+                                <div id="iconAdmin" class="icon-edificio" style="margin-right: 4%;"></div>
+                                {{"establecimiento.administrar" | translate}}
+                            </button>
+
+                            <ul class="lista">
+                                <li>
+                                    <div class="xs-12 col-md-12 ml-12 xl-12 extremoIzq lista-ocultar ocultar">
+                                        <button (click)='accion("listado", opciones)'
+                                            (click)="isBackComponent('usuarios')" type="button"
+                                            style="padding-left: 20%;" class="btn btn-primary-outlined subMenuSel" #userBtn>
+                                            <div class="icon-administrar"></div> {{"establecimiento.usuarios" |
+                                            translate}}
+                                        </button>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="xs-12 col-md-12 ml-12 xl-12 extremoIzq lista-ocultar ocultar">
+                                        <button (click)='accion("editar", opciones)' type="button"
+                                            style="padding-left: 20%;" class="btn btn-primary-outlined subMenuSel" #establismentBtn>
+                                            <div class="icon-administrar2"></div>
+                                            {{"establecimiento.editarEstablecimiento" | translate}}
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div *ngFor="let opciones of this.opciones; index as i"
+                        class="xs-12 col-md-12 ml-12 xl-12 extremoIzq">
+                        <button id="btnCartelera" *ngIf='opciones.nom_opcion == "Cartelera"'
+                            (click)='accion("cartelera", opciones)' (click)="isBackComponent('carteleras')"
+                            type="button" class="btn btn-primary-outlined menuSel" #carteleraBtn>
+                            <div id="iconCartelera" class="icon-cartelera" style="margin-right: 4%;"></div>
+                            {{"establecimiento.cartelera" | translate}}
+                        </button>
+                    </div>
+
+                    <div *ngFor="let opciones of this.opciones; index as i"
+                        class="xs-12 col-md-12 ml-12 xl-12 extremoIzq">
+                        <button (click)='accion("news", opciones)' *ngIf='opciones.nom_opcion == "Noticias"'
+                            type="button" (click)="isBackComponent('noticias')" class="btn btn-primary-outlined menuSel"
+                            #noticiasBtn>
+                            <div class="icon-noticias" style="margin-right: 4%;"></div>{{"establecimiento.noticias" |
+                            translate}}
+                        </button>
+                    </div>
+
+                    <div *ngFor="let opciones of this.opciones; index as i"
+                        class="xs-12 col-md-12 ml-12 xl-12 extremoIzq">
+                        <button (click)='accion("notificaciones", opciones)'
+                            *ngIf='opciones.nom_opcion == "Notificaciones"' (click)="isBackComponent('chat')"
+                            type="button" class="btn btn-primary-outlined menuSel" #novedadesBtn>
+                            <div class="icon-novedades" style="margin-right: 4%;"></div>
+                            {{"establecimiento.notificaciones" | translate}}
+                        </button>
+                    </div>
+
+
+                    <div *ngFor="let opciones of this.opciones; index as i"
+                        class="xs-12 col-md-12 ml-12 xl-12 extremoIzq">
+                        <button *ngIf='opciones.nom_opcion == "Documentos"' type="button"
+                            class="btn btn-primary-outlined menuSel">
+                            <div class="icon-documentos" style="margin-right: 4%;"></div>{{"establecimiento.documentos"
+                            | translate}}
+                        </button>
+                    </div>
+
+                    <div *ngFor="let opciones of this.opciones; index as i"
+                        class="xs-12 col-md-12 ml-12 xl-12 extremoIzq">
+                        <button (click)='accion("PQRS", opciones)' *ngIf='opciones.nom_opcion == "PQRS"'
+                            (click)="isBackComponent('pqrs')" type="button" class="btn btn-primary-outlined menuSel"
+                            #pqrsBtn>
+                            <div class="icon-pqrs" style="margin-right: 4%;"></div>{{"establecimiento.pqrs" |
+                            translate}}
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-xs-12 col-md-12 col-xl-10 col-lg-10" style="margin-top: -120px;">
+
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" style="margin-top: 15%;" *ngIf='this.cargando'>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <img type="image" src="../../../../assets/img/authorization/load_house.gif"
+                                style="height: 80%;" />
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" *ngIf='this.inicio'>
+                <div class="row">
+                    <div class="col-xs-12 col-md-11 col-xl-11 col-lg-11 componenteListVecinos">
+                        <div class="row">
+
+                            <div class="col-1 textDeLado">Funcionalidades</div>
+
+                            <div class="col-10">
+                                <div class="col">
+                                    <div class="col-12" style="margin-top: 5%;">
+                                        <div class="tittleInicio">Encuentra estas funcionalidades</div>
+                                        <div class="subtittleInicio">Empieza a usar las herramientas digitales
+                                            que<br>hemos creado para ti y transforma tu comunicación</div>
+                                    </div>
+                                    <div class="row sizeRowCenter">
+
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-1"><span class="icon-cartelera"
+                                                        style="background-size: 209em; margin-left: -10px;"></span>
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="tittleCardSmall">Cartelera</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-1"></div>
+                                                <div class="col-10">
+                                                    <div class="textCardSamll">Publica tus avisos informativos
+                                                        directamente en el lugar más visible por todos tus vecinos "su
+                                                        smartphone"</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-1"><span class="icon-administrar"
+                                                        style="background-size: 209em; margin-left: -10px;"></span>
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="tittleCardSmall">Vecinos</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-1"></div>
+                                                <div class="col-10">
+                                                    <div class="textCardSamll">Administra toda la información de los
+                                                        integrantes de las unidades y crea una comunicación efectiva con
+                                                        cada uno de ellos, afianzando tu relación.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" style="margin-bottom: 10%;">
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-1"><span class="icon-noticias"
+                                                        style="background-size: 209em; margin-left: -10px;"></span>
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="tittleCardSmall">Noticias</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-1"></div>
+                                                <div class="col-10">
+                                                    <div class="textCardSamll">Optimiza costos y logística entregando un
+                                                        boletín digital con la gestión de administración de su
+                                                        establecimiento y noticias de interés directamente al smartphone
+                                                        de tus vecinos.</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <div class="col-1"><span class="icon-pqrs"
+                                                        style="background-size: 209em; margin-left: -10px;"></span>
+                                                </div>
+                                                <div class="col-10">
+                                                    <div class="tittleCardSmall">PQRS-F</div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-1"></div>
+                                                <div class="col-10">
+                                                    <div class="textCardSamll">Gestiona en línea las peticiones, quejas,
+                                                        reclamos, sugerencias y felicitaciones desde cada smartphone.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" *ngIf='this.vecinoList'>
+                <div class="row">
+                    <div class="col-xs-12 col-md-11 col-xl-11 col-lg-11 componenteListVecinos">
+                        <app-list-vecinos [listadoVecinos]='this.vecinoList' [opcion]='this.opcionSelect'
+                            [establecimientoInfo]='this.establecimiento' (nombreMenu)='(this.nombreMenu = $event)'>
+                        </app-list-vecinos>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" *ngIf='this.editar'>
+                <div class="row">
+                    <div class="col-xs-12 col-md-11 col-xl-11 col-lg-11 componenteListVecinos">
+                        <app-edit-establecimiento [establecimientoInfo]='this.establecimiento'
+                            [opcion]='this.opcionSelect' [listadoVecinos]='this.vecinoList'></app-edit-establecimiento>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" *ngIf='this.cartelera'>
+                <div class="row">
+                    <div class="col-xs-12 col-md-11 col-xl-11 col-lg-11 componenteListVecinos">
+                        <app-billboard [objEstablecimiento]='this.establecimiento' [opcion]='this.opcionSelect'
+                            (nombreMenu)='(this.nombreMenu = $event)'></app-billboard>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" *ngIf='this.news'>
+                <div class="row">
+                    <div class="col-xs-12 col-md-11 col-xl-11 col-lg-11 componenteListVecinos">
+                        <app-news [objEstablecimiento]='this.establecimiento' [opcion]='this.opcionSelect'
+                            (nombreMenu)='(this.nombreMenu = $event)'></app-news>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" *ngIf='this.notificaciones'>
+                <div class="row">
+                    <div class="col-xs-12 col-md-11 col-xl-11 col-lg-11 componenteListVecinos">
+                        <app-chat-notification [objEstablecimiento]='this.establecimiento' [opcion]='this.opcionSelect'
+                            (nombreMenu)='(this.nombreMenu = $event)'></app-chat-notification>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" *ngIf='this.perfil'>
+                <div class="row">
+                    <div class="col-xs-12 col-md-11 col-xl-11 col-lg-11 componenteListVecinos">
+                        <app-profile></app-profile>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-xl-12 col-lg-12" *ngIf='this.pqrs'>
+                <div class="row">
+                    <div class="col-xs-12 col-md-11 col-xl-11 col-lg-11 componenteListVecinos">
+                        <app-pqrs [objEstablecimiento]='this.establecimiento' [opcion]='this.opcionSelect'
+                            (nombreMenu)='(this.nombreMenu = $event)'></app-pqrs>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="spanClose" aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="SelEstablForm">
+                    <div *ngIf='this.Establecimientos' class="form-group" style="width: 80%;margin-left: 65px;">
+                        <label class="TextHeaderChangeStableshment"
+                            for="exampleFormControlSelect1">{{"establecimiento.aquiMandas" | translate}}</label>
+                        <label class="TextDescriptionChangeStableshment">{{"establecimiento.noTeCompliques" |
+                            translate}}</label>
+                        <label class="TextTittleChangeStableshment">{{"establecimiento.seleccionaInmueble" |
+                            translate}}</label>
+                        <select class="form-control inputChangeStableshment" id="exampleFormControlSelect1"
+                            formControlName="EstablecimientoSeleccionadoForm">
+                            <option *ngFor="let Establecimiento of this.Establecimientos; index as i" [value]="i">
+                                {{Establecimiento.nom_establec}}</option>
+                        </select>
+                    </div>
+                </form>
+                <button (click)='this.cambiarEstablecimiento()' data-dismiss="modal"
+                    class="btnChangeStableshment">{{"establecimiento.manosObra" | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

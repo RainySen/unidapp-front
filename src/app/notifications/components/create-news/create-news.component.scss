@@ -1,0 +1,160 @@
+    .crearCartelera h2 {
+        font: normal normal bold 25px/25px Raleway;
+        letter-spacing: 0px;
+        color: #7D368A;
+        opacity: 1;
+        text-align: left;
+        margin: 0 0 0 0;
+    }
+
+    .crearCartelera h3 {
+        font: normal normal normal 15px/20px Raleway;
+        letter-spacing: 0px;
+        color: #525F7F;
+        opacity: 1;
+        text-align: left;
+        margin: 0 0 0 0;
+    }
+
+    .imgNone {
+        margin-bottom: 15px;
+        background-repeat: no-repeat;
+        background-size: 3em;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .col-12 {
+        margin-top: 1rem;
+        border: 1ps solid black;
+    }
+
+    .col-6 {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .crearCartelera label {
+        font: normal normal bold 14px/16px Raleway;
+        letter-spacing: 0px;
+        color: #000D3D;
+        opacity: 1;
+        width: 100%;
+        text-align: left;
+    }
+
+    textarea {
+        border: 1px solid #9DA5B5;
+        border-radius: 10px;
+        padding: 0.5rem;
+        background: #9DA5B533 0% 0% no-repeat padding-box;
+        opacity: 1;
+        width: 100%;
+        height: 10rem;
+    }
+
+    .crearCartelera input {
+        width: 100%;
+        height: 50px;
+        border: 1px solid #9DA5B5;
+        border-radius: 10px;
+        padding: 0.5rem;
+    }
+
+    .crearCartelera .seccion5 input {
+        width: 13rem;
+        margin-right: 0.5rem;
+    }
+
+    @media(max-width:1555px) {
+        .crearCartelera .seccion5 input {
+            width: 100%;
+        }
+    }
+
+    .seccion8 {
+        text-align: center;
+    }
+
+    .seccion8 button {
+        margin-right: 1rem;
+        margin-top: 1rem;
+        width: 192px;
+        height: 50px;
+        background: #3DB5FF 0% 0% no-repeat padding-box;
+        border-radius: 10px;
+        border: none;
+        opacity: 1;
+    }
+
+    .seccion8 button:hover {
+        background: #038be0 0% 0% no-repeat padding-box;
+    }
+
+    .seccion3 input {
+        height: 2.7rem;
+        width: 95%;
+        border: 1px solid #9DA5B5;
+        background-color: #9DA5B533;
+    }
+
+    .botonRegresar {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border: 1px solid #3DB5FF;
+        border-radius: 8px;
+        opacity: 1;
+        color: #3DB5FF;
+        height: 2.7em;
+        margin-right: 1%;
+    }
+
+    .imagenes {
+        grid-column-gap: 16px;
+        grid-template-columns: repeat(2, calc(50% - 1%));
+    }
+
+    .aggImagen {
+        text-align: center !important;
+    }
+
+    .placas {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    :host ::ng-deep .ck.ck-editor__editable {
+        min-height: 200px;
+    }
+
+    .icon-exc{
+        width: 45px;
+        height: 45px;
+        margin-top: 7px;
+    }
+
+    .texto-ayuda{
+        margin-left: -1.5em;
+    }
+
+    .btn-white {
+        background: white !important;
+        color: #3db5ff;
+        border: 1px solid #3db5ff !important;
+    }
+
+    .seccion6-2{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .styleButton{
+    width: 60%;
+    background-color: #ebedf0;
+    height: 100%;
+    }
+
+    .textError{
+      color: red;
+    }
