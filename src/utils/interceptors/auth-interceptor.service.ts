@@ -21,10 +21,10 @@ export class AuthInterceptorService implements HttpInterceptor {
     const decript = atob(token);
 
     if(tokenNotify){
-      request = request.clone({headers: request.headers.set('Authorization', `${tokenNotify}`)});
+      request = request.clone({headers: request.headers.set('Authorization', `${ tokenNotify }`)});
     }else{
       if (token) {
-        request = request.clone({headers: request.headers.set('Authorization', `Bearer ${decript}`)});
+        request = request.clone({headers: request.headers.set('Authorization', `bearer ${ decript }`)});
       }
     }
 
