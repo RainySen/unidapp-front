@@ -53,7 +53,7 @@ export const environment = {
 
 
     //url:"https://pacoprod-back.azurewebsites.net",
-    url:"http://192.168.100.99:8080",
+    url:"http://192.168.100.63:8085",
     autenticacion:"/authenticate",
     usuarios:'/findAllUsers',
     establecimientos: '/getMyEstablishments',

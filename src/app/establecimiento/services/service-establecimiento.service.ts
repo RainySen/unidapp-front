@@ -24,7 +24,7 @@ export class ServiceEstablecimientoService {
   }
 
   getUser(idUsuario): Observable<any>{
-    return this.http.get(environment.url + environment.neighbor + '/getByUserId' + '/' + idUsuario);
+    return this.http.get(environment.url + environment.user + '/getUser' + '/' + idUsuario);
   }
 
   getRol(): Observable<GenericResponse>{
